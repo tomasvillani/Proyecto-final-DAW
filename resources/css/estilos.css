@@ -24,48 +24,51 @@
     z-index: 1000;
 }
 
-
-/* Estilo de la ventana del chatbot */
 #chatbot-container {
+    display: none; /* Mantenerlo oculto por defecto */
     position: fixed;
-    bottom: 80px;
-    right: 20px;
+    bottom: 60px; /* Ajusta según lo necesites */
+    right: 20px; /* Ajusta según lo necesites */
     width: 300px;
     height: 400px;
-    background: white;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
+    z-index: 9999;
+    transform: translateY(100%); /* Empuja el chatbot hacia abajo (fuera de la pantalla) */
+    opacity: 0; /* Comienza transparente */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Animación suave para mostrar/ocultar */
 }
 
-/* Estilo del header del chatbot */
+#chatbot-container.show {
+    transform: translateY(0); /* Vuelve a su posición original */
+    opacity: 1; /* Se hace completamente visible */
+}
+
 #chatbot-header {
-    background: #007bff;
+    background-color: #007bff;
     color: white;
     padding: 10px;
+    font-size: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Estilo del área de mensajes */
 #chatbot-messages {
-    flex: 1;
     padding: 10px;
+    height: 300px;
     overflow-y: auto;
-    font-size: 14px;
 }
 
-/* Estilo del input */
 #chatbot-input {
     width: 100%;
     padding: 10px;
-    border: none;
     border-top: 1px solid #ccc;
-    font-size: 14px;
+    box-sizing: border-box;
 }
+
 
 .owl-carousel .owl-item img{
     width:90px;

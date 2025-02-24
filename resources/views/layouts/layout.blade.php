@@ -38,7 +38,8 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-    <div id="chatbot-icon" onclick="toggleChat()">
+    <!-- Botón flotante del chatbot -->
+    <div id="chatbot-icon">
         💬
     </div>
 
@@ -46,11 +47,12 @@
     <div id="chatbot-container">
         <div id="chatbot-header">
             <span>Chatbot Gym</span>
-            <button onclick="toggleChat()">✖</button>
+            <button>✖</button>
         </div>
         <div id="chatbot-messages"></div>
         <input type="text" id="chatbot-input" placeholder="Escribe un mensaje..." onkeypress="sendMessage(event)">
     </div>
+
 
 
     <!-- JavaScript Libraries -->
