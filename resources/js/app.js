@@ -18,7 +18,7 @@ import './main.js';
 import Alpine from 'alpinejs';
 
 function toggleChat() {
-    var chatbotContainer = document.getElementById('chatbot-container');
+    var chatbotContainer = document.querySelector('#chatbot-container');
 
     // Si el chatbot no tiene la clase 'show', significa que está oculto y se debe mostrar
     if (!chatbotContainer.classList.contains('show')) {
@@ -36,7 +36,7 @@ function toggleChat() {
 }
 
 // Event listener para el ícono de chatbot
-document.getElementById('chatbot-icon').addEventListener('click', toggleChat);
+document.querySelector('#chatbot-icon').addEventListener('click', toggleChat);
 
 // Event listener para el botón de cerrar del chatbot
 document.querySelector('#chatbot-header button').addEventListener('click', toggleChat);
