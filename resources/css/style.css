@@ -75,7 +75,7 @@ h6,
 }
 
 .navbar-dark .navbar-nav .nav-link {
-    font-family: Oswald, sans-serif;
+    font-family: 'Oswald', sans-serif;
     margin-right: 30px;
     padding: 40px 0;
     color: var(--light);
@@ -129,7 +129,7 @@ h6,
 }
 
 .bg-hero {
-    background: linear-gradient(rgba(34, 36, 41, .8), rgba(34, 36, 41, .8)), url(../img/carousel-1.jpg) top center no-repeat;
+    background: linear-gradient(rgba(34, 36, 41, .8), rgba(34, 36, 41, .8)), url(../../public/img/carousel-1.jpg) top center no-repeat;
     background-size: cover;
 }
 

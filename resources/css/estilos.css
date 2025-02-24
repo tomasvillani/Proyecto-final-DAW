@@ -1,43 +1,72 @@
-.chatbot-btn {
+/* Botón de volver arriba */
+.back-to-top {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    z-index: 1000;
+}
+
+/* Botón flotante del chatbot */
+#chatbot-icon {
+    position: fixed;
+    bottom: 80px; /* Se mueve más arriba */
+    right: 20px;
     background-color: #007bff;
     color: white;
-    border: none;
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 24px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    z-index: 1000;
 }
 
-.chatbot-container {
+
+/* Estilo de la ventana del chatbot */
+#chatbot-container {
     position: fixed;
     bottom: 80px;
     right: 20px;
     width: 300px;
+    height: 400px;
     background: white;
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     display: none;
-    z-index: 1000;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-.chatbot-header {
+/* Estilo del header del chatbot */
+#chatbot-header {
     background: #007bff;
     color: white;
     padding: 10px;
-    border-radius: 10px 10px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.chatbot-body {
+/* Estilo del área de mensajes */
+#chatbot-messages {
+    flex: 1;
     padding: 10px;
+    overflow-y: auto;
+    font-size: 14px;
 }
-.hidden {
-    display: none;
+
+/* Estilo del input */
+#chatbot-input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-top: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.owl-carousel .owl-item img{
+    width:90px;
 }

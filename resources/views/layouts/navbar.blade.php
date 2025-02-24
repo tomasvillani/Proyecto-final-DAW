@@ -17,20 +17,20 @@
 
                     <!-- MENÚ DE NAVEGACIÓN -->
                     <div class="collapse navbar-collapse justify-content-around" id="navbarCollapse">
-                        <div class="navbar-nav text-center ">
+                        <div class="navbar-nav text-center">
                             <a href="/" class="nav-item nav-link">Home</a>
-                            <a href="about.html" class="nav-item nav-link">About</a>
-                            <a href="class.html" class="nav-item nav-link">Classes</a>
-                            <a href="team.html" class="nav-item nav-link">Trainers</a>
+                            <a href="/about" class="nav-item nav-link">About</a>
+                            <a href="/classes" class="nav-item nav-link">Classes</a>
+                            <a href="/trainers" class="nav-item nav-link">Trainers</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu">
-                                    <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                                    <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                    <a href="/blog" class="dropdown-item">Blog Grid</a>
+                                    <a href="/details" class="dropdown-item">Blog Detail</a>
+                                    <a href="/testimonial" class="dropdown-item">Testimonial</a>
                                 </div>
                             </div>
-                            <a href="contact.html" class="nav-item nav-link">Contact</a>
+                            <a href="/contact" class="nav-item nav-link">Contact</a>
                         </div>
                     </div>
 
@@ -42,4 +42,4 @@
                 </div>
             </nav>
         </div>
-</div>
+    </div>
