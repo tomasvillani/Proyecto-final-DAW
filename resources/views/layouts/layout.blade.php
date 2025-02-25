@@ -51,7 +51,12 @@
             <i class="fa-solid fa-rectangle-xmark fa-xl"></i>
         </div>
         <div id="chatbot-messages"></div>
-        <input type="text" id="chatbot-input" placeholder="Escribe un mensaje..." onkeypress="sendMessage(event)">
+        <div id="chatbot-input-container">
+            <input type="text" id="chatbot-input" placeholder="Escribe un mensaje...">
+            <button id="send-button">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
     </div>
 
 
