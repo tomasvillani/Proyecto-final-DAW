@@ -58,72 +58,73 @@ document.addEventListener("DOMContentLoaded", function () {
         chatbotContainer.classList.remove("active");
     });
 
+    const api_key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNzA1NTMyNTUtOTA3YS00NTg2LTg2YWItYjI1NThlZmVhMGY3IiwidHlwZSI6ImFwaV90b2tlbiJ9.Baa8LJXbzwrUIWMvqGzWltgEUToMMmiIEQ7I_VNtTfg";
+
     function sendMessage() {
         let userMessage = chatbotInput.value.trim();
         if (userMessage === "") return;
-        
+    
         // Mostrar el mensaje del usuario en el chat
         appendMessage("Tú", userMessage, "user-message");
-        
-        // Limpiar y deshabilitar inputs mientras se procesa la solicitud
+    
         chatbotInput.value = "";
         chatbotInput.disabled = true;
         sendButton.disabled = true;
-        
+    
         // Crear la solicitud AJAX para Eden AI
         var xhr = new XMLHttpRequest();
-        // Se utiliza el endpoint de generación de texto
-        xhr.open("POST", "https://api.edenai.run/v2/llm/generate", true);
+        xhr.open("POST", "https://api.edenai.run/v2/llm/chat", true); // Endpoint correcto
         xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNzA1NTMyNTUtOTA3YS00NTg2LTg2YWItYjI1NThlZmVhMGY3IiwidHlwZSI6ImFwaV90b2tlbiJ9.Baa8LJXbzwrUIWMvqGzWltgEUToMMmiIEQ7I_VNtTfg"); // Reemplaza TU_CLAVE_API con tu clave real
-        
+        xhr.setRequestHeader("Authorization", `Bearer ${api_key}`); // Reemplázalo con tu API Key real
+    
         // Manejar la respuesta
         xhr.onload = function () {
             if (xhr.status === 200) {
-            try {
-                const data = JSON.parse(xhr.responseText);
-                // Verifica la estructura de la respuesta según la documentación
-                if (data && data.generated_text) {
-                let botMessage = data.generated_text;
-                // Mostrar la respuesta del chatbot
-                appendMessage("GymBot", botMessage, "bot-message");
-                } else {
-                console.error("Error: Respuesta inesperada de la API", data);
-                appendMessage("GymBot", "Hubo un error al procesar tu mensaje. Intenta de nuevo.", "bot-message");
+                try {
+                    const data = JSON.parse(xhr.responseText);
+                    
+                    if (data && data.openai && data.openai.generated_text) {
+                        let botMessage = data.openai.generated_text; // Verifica la estructura correcta
+                        appendMessage("GymBot", botMessage, "bot-message");
+                    } else {
+                        console.error("Error: Respuesta inesperada de la API", data);
+                        appendMessage("GymBot", "Hubo un error al procesar tu mensaje. Intenta de nuevo.", "bot-message");
+                    }
+                } catch (error) {
+                    console.error("Error al parsear la respuesta:", error);
+                    appendMessage("GymBot", "Hubo un error al procesar tu mensaje. Intenta de nuevo.", "bot-message");
                 }
-            } catch (error) {
-                console.error("Error al parsear la respuesta:", error);
+            } else {
+                console.error("Error en la solicitud:", xhr.status, xhr.statusText);
                 appendMessage("GymBot", "Hubo un error al procesar tu mensaje. Intenta de nuevo.", "bot-message");
             }
-            } else {
-            console.error("Error en la solicitud:", xhr.status, xhr.statusText);
-            appendMessage("GymBot", "Hubo un error al procesar tu mensaje. Intenta de nuevo.", "bot-message");
-            }
-            // Habilitar nuevamente el input y el botón
+    
             chatbotInput.disabled = false;
             sendButton.disabled = false;
         };
-        
-        // Manejar errores de la solicitud AJAX
+    
         xhr.onerror = function () {
             console.error("Request failed");
             appendMessage("GymBot", "Hubo un error al procesar tu mensaje. Intenta de nuevo.", "bot-message");
             chatbotInput.disabled = false;
             sendButton.disabled = false;
         };
-        
-        // Preparar los datos de la solicitud
+    
+        // Enviar la solicitud con el formato correcto
         var requestData = JSON.stringify({
-            providers: ["openai"],  // Se usa un arreglo para indicar el proveedor
-            model: "gpt-3.5-turbo",   // Modelo seleccionado
-            prompt: userMessage,      // Usamos 'prompt' ya que este endpoint espera texto plano
-            max_tokens: 150,          // Número máximo de tokens en la respuesta
-            temperature: 0.7          // Control de creatividad en la respuesta (opcional)
+            providers: ["openai"], // Cambia a "deepseek" si es el que usas
+            model: "gpt-3.5-turbo",
+            messages: [
+                { role: "system", content: "Eres un chatbot de gimnasio que ayuda con entrenamientos, dietas y rutinas." },
+                { role: "user", content: userMessage }
+            ],
+            max_tokens: 150,
+            temperature: 0.7
         });
-        
-        // Enviar la solicitud
+    
         xhr.send(requestData);
-    }      
+    }
+        
 
     // Función para agregar mensajes al chat
     function appendMessage(sender, message, className) {
