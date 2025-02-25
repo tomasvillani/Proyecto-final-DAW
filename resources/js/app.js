@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         chatbotContainer.classList.remove("active");
     });
 
-    const api_key="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNzA1NTMyNTUtOTA3YS00NTg2LTg2YWItYjI1NThlZmVhMGY3IiwidHlwZSI6ImFwaV90b2tlbiJ9.Baa8LJXbzwrUIWMvqGzWltgEUToMMmiIEQ7I_VNtTfg";
+    const api_key="O4MWBzixAdoAz8R3mhAEGAgpAXjmqj5sJXb1OHOD";
 
     function sendMessage() {
         let userMessage = chatbotInput.value.trim();
@@ -71,60 +71,43 @@ document.addEventListener("DOMContentLoaded", function () {
         chatbotInput.disabled = true;
         sendButton.disabled = true;
     
-        // Crear la solicitud AJAX para Eden AI
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://api.edenai.run/v2/llm/chat", true); // Endpoint correcto
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.setRequestHeader("Authorization", `Bearer ${api_key}`); // Reemplázalo con tu API Key real
-    
-        // Manejar la respuesta
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                try {
-                    const data = JSON.parse(xhr.responseText);
-                    
-                    if (data && data.openai && data.openai.generated_text) {
-                        let botMessage = data.openai.generated_text; // Verifica la estructura correcta
-                        appendMessage("GymBot", botMessage, "bot-message");
-                    } else {
-                        console.error("Error: Respuesta inesperada de la API", data);
-                        appendMessage("GymBot", "Hubo un error al procesar tu mensaje. Intenta de nuevo.", "bot-message");
-                    }
-                } catch (error) {
-                    console.error("Error al parsear la respuesta:", error);
-                    appendMessage("GymBot", "Hubo un error al procesar tu mensaje. Intenta de nuevo.", "bot-message");
-                }
-            } else {
-                console.error("Error en la solicitud:", xhr.status, xhr.statusText);
-                appendMessage("GymBot", "Hubo un error al procesar tu mensaje. Intenta de nuevo.", "bot-message");
-            }
-    
-            chatbotInput.disabled = false;
-            sendButton.disabled = false;
-        };
-    
-        xhr.onerror = function () {
-            console.error("Request failed");
-            appendMessage("GymBot", "Hubo un error al procesar tu mensaje. Intenta de nuevo.", "bot-message");
-            chatbotInput.disabled = false;
-            sendButton.disabled = false;
-        };
-    
-        // Enviar la solicitud con el formato correcto
-        var requestData = JSON.stringify({
-            providers: ["openai"], // Cambia a "deepseek" si es el que usas
-            model: "gpt-3.5-turbo",
-            messages: [
-                { role: "system", content: "Eres un chatbot de gimnasio que ayuda con entrenamientos, dietas y rutinas." },
-                { role: "user", content: userMessage }
-            ],
+        // Preparar los datos de la solicitud
+        const requestData = {
+            model: "command-xlarge-nightly", // Modelo de Cohere
+            prompt: `Eres un chatbot de gimnasio que ayuda a los usuarios con entrenamientos, dietas y rutinas. Responde de forma amigable y útil a las preguntas relacionadas con el fitness y la salud. Pregunta: "${userMessage}"`, // Mensaje de sistema para dar contexto
             max_tokens: 150,
             temperature: 0.7
-        });
+        };
     
-        xhr.send(requestData);
-    }
-        
+        // Realizar la solicitud POST a la API de Cohere
+        fetch("https://api.cohere.ai/v1/generate", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${api_key}`
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.generations && data.generations[0]) {
+                const botMessage = data.generations[0].text.trim();
+                // Mostrar la respuesta del chatbot
+                appendMessage("GymBot", botMessage, "bot-message");
+            } else {
+                console.error("Error: Respuesta inesperada de la API", data);
+                appendMessage("GymBot", "Hubo un error al procesar tu mensaje. Intenta de nuevo.", "bot-message");
+            }
+        })
+        .catch(error => {
+            console.error("Error en la solicitud:", error);
+            appendMessage("GymBot", "Hubo un error al procesar tu mensaje. Intenta de nuevo.", "bot-message");
+        })
+        .finally(() => {
+            chatbotInput.disabled = false;
+            sendButton.disabled = false;
+        });
+    } 
 
     // Función para agregar mensajes al chat
     function appendMessage(sender, message, className) {
