@@ -9,7 +9,7 @@
 /* Botón flotante del chatbot */
 #chatbot-icon {
     position: fixed;
-    bottom: 80px; /* Se mueve más arriba */
+    bottom: 100px; /* Se mueve más arriba */
     right: 20px;
     background-color: #007bff;
     color: white;
@@ -54,6 +54,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 2px solid #007bff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 #chatbot-messages {
@@ -65,10 +68,11 @@
 #chatbot-input {
     width: 100%;
     padding: 10px;
-    border-top: 1px solid #ccc;
+    border: none;
     box-sizing: border-box;
+    border: none;
+    outline: none;
 }
-
 
 .owl-carousel .owl-item img{
     width:90px;

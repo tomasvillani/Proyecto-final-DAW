@@ -39,7 +39,7 @@ function toggleChat() {
 document.querySelector('#chatbot-icon').addEventListener('click', toggleChat);
 
 // Event listener para el botón de cerrar del chatbot
-document.querySelector('#chatbot-header button').addEventListener('click', toggleChat);
+document.querySelector('#chatbot-header i').addEventListener('click', toggleChat);
 
 
 

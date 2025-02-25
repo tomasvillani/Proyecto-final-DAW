@@ -3,46 +3,41 @@
             <div class="col-lg-8 col-md-6">
                 <div class="row gx-5">
                     <div class="col-lg-4 col-md-12 pt-5 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
+                        <h4 class="text-uppercase text-light mb-4">Estar en contacto</h4>
                         <div class="d-flex mb-2">
                             <i class="bi bi-geo-alt text-primary me-2"></i>
-                            <p class="mb-0">123 Street, New York, USA</p>
-                        </div>
-                        <div class="d-flex mb-2">
-                            <i class="bi bi-envelope-open text-primary me-2"></i>
-                            <p class="mb-0">info@example.com</p>
+                            <p class="mb-0">Av. de los Volcanes, 24, 35560 Tinajo, Las Palmas</p>
                         </div>
                         <div class="d-flex mb-2">
                             <i class="bi bi-telephone text-primary me-2"></i>
-                            <p class="mb-0">+012 345 67890</p>
+                            <p class="mb-0">928 83 81 70</p>
                         </div>
                         <div class="d-flex mt-4">
-                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-whatsapp fa-lg"></i></a>
                             <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-linkedin-in"></i></a>
                             <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Quick Links</h4>
+                        <h4 class="text-uppercase text-light mb-4">Enlaces rápidos</h4>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-secondary mb-2" href="/"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                            <a class="text-secondary mb-2" href="/about"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                            <a class="text-secondary mb-2" href="/classes"><i class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
-                            <a class="text-secondary mb-2" href="/trainers"><i class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
-                            <a class="text-secondary mb-2" href="/blog"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                            <a class="text-secondary" href="/contact"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                            <a class="text-secondary mb-2" href="/"><i class="bi bi-arrow-right text-primary me-2"></i>Inicio</a>
+                            <a class="text-secondary mb-2" href="/about"><i class="bi bi-arrow-right text-primary me-2"></i>Sobre Nosotros</a>
+                            <a class="text-secondary mb-2" href="/classes"><i class="bi bi-arrow-right text-primary me-2"></i>Horarios</a>
+                            <a class="text-secondary mb-2" href="/trainers"><i class="bi bi-arrow-right text-primary me-2"></i>Personal</a>
+                            <a class="text-secondary mb-2" href="/blog"><i class="bi bi-arrow-right text-primary me-2"></i>Eventos</a>
+                            <a class="text-secondary" href="/contact"><i class="bi bi-arrow-right text-primary me-2"></i>Contacto</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
-                        <h4 class="text-uppercase text-light mb-4">Popular Links</h4>
+                        <h4 class="text-uppercase text-light mb-4">Más visitados</h4>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-secondary mb-2" href="/"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                            <a class="text-secondary mb-2" href="/about"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                            <a class="text-secondary mb-2" href="/classes"><i class="bi bi-arrow-right text-primary me-2"></i>Class Schedule</a>
-                            <a class="text-secondary mb-2" href="/trainers"><i class="bi bi-arrow-right text-primary me-2"></i>Our Trainers</a>
-                            <a class="text-secondary mb-2" href="/blog"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                            <a class="text-secondary" href="/contact"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                            <a class="text-secondary mb-2" href="/"><i class="bi bi-arrow-right text-primary me-2"></i>Inicio</a>
+                            <a class="text-secondary mb-2" href="/about"><i class="bi bi-arrow-right text-primary me-2"></i>Sobre Nosotros</a>
+                            <a class="text-secondary mb-2" href="/classes"><i class="bi bi-arrow-right text-primary me-2"></i>Horarios</a>
+                            <a class="text-secondary mb-2" href="/trainers"><i class="bi bi-arrow-right text-primary me-2"></i>Personal</a>
+                            <a class="text-secondary mb-2" href="/blog"><i class="bi bi-arrow-right text-primary me-2"></i>Eventos</a>
+                            <a class="text-secondary" href="/contact"><i class="bi bi-arrow-right text-primary me-2"></i>Contacto</a>
                         </div>
                     </div>
                 </div>
@@ -50,12 +45,12 @@
             <div class="col-lg-4 col-md-6">
                 <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-5">
                     <h4 class="text-uppercase text-white mb-4">Newsletter</h4>
-                    <h6 class="text-uppercase text-white">Subscribe Our Newsletter</h6>
-                    <p class="text-light">Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
+                    <h6 class="text-uppercase text-white">Suscríbete a nuestro Newsletter</h6>
+                    <p class="text-light">Para estar al tanto de todos los eventos de nuestro gimnasio</p>
                     <form action="">
                         <div class="input-group">
-                            <input type="text" class="form-control border-white p-3" placeholder="Your Email">
-                            <button class="btn btn-dark">Sign Up</button>
+                            <input type="text" class="form-control border-white p-3" placeholder="Tu Email">
+                            <button class="btn btn-dark">Inscribirse</button>
                         </div>
                     </form>
                 </div>

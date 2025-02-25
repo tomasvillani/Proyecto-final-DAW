@@ -18,25 +18,24 @@
                     <!-- MENÚ DE NAVEGACIÓN -->
                     <div class="collapse navbar-collapse justify-content-around" id="navbarCollapse">
                         <div class="navbar-nav text-center">
-                            <a href="/" class="nav-item nav-link">Home</a>
-                            <a href="/about" class="nav-item nav-link">About</a>
-                            <a href="/classes" class="nav-item nav-link">Classes</a>
-                            <a href="/trainers" class="nav-item nav-link">Trainers</a>
+                            <a href="/" class="nav-item nav-link">Inicio</a>
+                            <a href="/about" class="nav-item nav-link">Sobre Nosotros</a>
+                            <a href="/classes" class="nav-item nav-link">Clases</a>
+                            <a href="/trainers" class="nav-item nav-link">Personal</a>
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Interés</a>
                                 <div class="dropdown-menu">
-                                    <a href="/blog" class="dropdown-item">Blog Grid</a>
-                                    <a href="/details" class="dropdown-item">Blog Detail</a>
-                                    <a href="/testimonial" class="dropdown-item">Testimonial</a>
+                                    <a href="/blog" class="dropdown-item">Eventos</a>
+                                    <a href="/testimonial" class="dropdown-item">Reseñas</a>
                                 </div>
                             </div>
-                            <a href="/contact" class="nav-item nav-link">Contact</a>
+                            <a href="/contact" class="nav-item nav-link">Contacto</a>
                         </div>
                     </div>
 
                     <!-- BOTÓN JOIN US (Solo visible en pantallas grandes) -->
                     <div class="col-lg-3 d-none d-lg-block text-end">
-                        <a href="" class="btn btn-primary py-md-3 px-md-5">Join Us</a>
+                        <a href="" class="btn btn-primary py-md-3 px-md-5">Inscríbete</a>
                     </div>
 
                 </div>

@@ -10,6 +10,7 @@
 
     <!-- Favicon -->
     <link href="img/icono_gym.png" rel="icon">
+    <script src="https://kit.fontawesome.com/4dd134ba8a.js" crossorigin="anonymous"></script>
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -40,14 +41,14 @@
 
     <!-- Botón flotante del chatbot -->
     <div id="chatbot-icon">
-        💬
+        <i class="fa-solid fa-robot" style="color: #ffffff;"></i>
     </div>
 
     <!-- Ventana del chatbot -->
     <div id="chatbot-container">
         <div id="chatbot-header">
             <span>Chatbot Gym</span>
-            <button>✖</button>
+            <i class="fa-solid fa-rectangle-xmark fa-xl"></i>
         </div>
         <div id="chatbot-messages"></div>
         <input type="text" id="chatbot-input" placeholder="Escribe un mensaje..." onkeypress="sendMessage(event)">
