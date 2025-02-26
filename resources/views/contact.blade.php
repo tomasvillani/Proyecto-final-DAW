@@ -38,7 +38,7 @@
                         <i class="fa fa-envelope fs-4 text-white"></i>
                     </div>
                     <h5 class="text-uppercase text-primary">Nuestro email</h5>
-                    <p class="text-secondary mb-0">info@example.com</p>
+                    <p class="text-secondary mb-0">gymtinajo@gmail.com</p>
                 </div>
             </div>
             <div class="col-lg-4">
