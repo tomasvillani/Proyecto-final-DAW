@@ -7,9 +7,9 @@
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
-                <h1 class="display-2 text-uppercase text-white mb-md-4">Contact</h1>
-                <a href="/" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
-                <a href="/contact" class="btn btn-light py-md-3 px-md-5">Contact</a>
+                <h1 class="display-2 text-uppercase text-white mb-md-4">Contacto</h1>
+                <a href="/" class="btn btn-primary py-md-3 px-md-5 me-3">Inicio</a>
+                <a href="/contact" class="btn btn-light py-md-3 px-md-5">Contacto</a>
             </div>
         </div>
     </div>
@@ -19,8 +19,8 @@
     <!-- Contact Start -->
     <div class="container-fluid p-5">
         <div class="mb-5 text-center">
-            <h5 class="text-primary text-uppercase">Contact Us</h5>
-            <h1 class="display-3 text-uppercase mb-0">Get In Touch</h1>
+            <h5 class="text-primary text-uppercase">Contáctanos</h5>
+            <h1 class="display-3 text-uppercase mb-0">Estar en contacto</h1>
         </div>
         <div class="row g-5 mb-5">
             <div class="col-lg-4">
@@ -28,8 +28,8 @@
                     <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
                         <i class="fa fa-map-marker-alt fs-4 text-white"></i>
                     </div>
-                    <h5 class="text-uppercase text-primary">Visit Us</h5>
-                    <p class="text-secondary mb-0">123 Street, New York, USA</p>
+                    <h5 class="text-uppercase text-primary">Visítanos</h5>
+                    <p class="text-secondary mb-0">Av. de los Volcanes, 24, 35560 Tinajo, Las Palmas</p>
                 </div>
             </div>
             <div class="col-lg-4">
@@ -37,7 +37,7 @@
                     <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
                         <i class="fa fa-envelope fs-4 text-white"></i>
                     </div>
-                    <h5 class="text-uppercase text-primary">Email Us</h5>
+                    <h5 class="text-uppercase text-primary">Nuestro email</h5>
                     <p class="text-secondary mb-0">info@example.com</p>
                 </div>
             </div>
@@ -46,8 +46,8 @@
                     <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
                         <i class="fa fa-phone fs-4 text-white"></i>
                     </div>
-                    <h5 class="text-uppercase text-primary">Call Us</h5>
-                    <p class="text-secondary mb-0">+012 345 6789</p>
+                    <h5 class="text-uppercase text-primary">Llámanos</h5>
+                    <p class="text-secondary mb-0">928 83 81 70</p>
                 </div>
             </div>
         </div>
@@ -57,19 +57,19 @@
                     <form>
                         <div class="row g-3">
                             <div class="col-6">
-                                <input type="text" class="form-control bg-light border-0 px-4" placeholder="Your Name" style="height: 55px;">
+                                <input type="text" class="form-control bg-light border-0 px-4" placeholder="Tu nombre" style="height: 55px;">
                             </div>
                             <div class="col-6">
-                                <input type="email" class="form-control bg-light border-0 px-4" placeholder="Your Email" style="height: 55px;">
+                                <input type="email" class="form-control bg-light border-0 px-4" placeholder="Tu correo electrónico" style="height: 55px;">
                             </div>
                             <div class="col-12">
-                                <input type="text" class="form-control bg-light border-0 px-4" placeholder="Subject" style="height: 55px;">
+                                <input type="text" class="form-control bg-light border-0 px-4" placeholder="Asunto" style="height: 55px;">
                             </div>
                             <div class="col-12">
-                                <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Message"></textarea>
+                                <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Mensaje"></textarea>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                                <button class="btn btn-primary w-100 py-3" type="submit">Enviar</button>
                             </div>
                         </div>
                     </form>

@@ -7,9 +7,9 @@
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
-                <h1 class="display-2 text-uppercase text-white mb-md-4">Classes</h1>
-                <a href="/" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
-                <a href="/classes" class="btn btn-light py-md-3 px-md-5">Classes</a>
+                <h1 class="display-2 text-uppercase text-white mb-md-4">Clases</h1>
+                <a href="/" class="btn btn-primary py-md-3 px-md-5 me-3">Inicio</a>
+                <a href="/classes" class="btn btn-light py-md-3 px-md-5">Clases</a>
             </div>
         </div>
     </div>
@@ -19,31 +19,31 @@
     <!-- Class Timetable Start -->
     <div class="container-fluid p-5">
         <div class="mb-5 text-center">
-            <h5 class="text-primary text-uppercase">Class Schedule</h5>
-            <h1 class="display-3 text-uppercase mb-0">Working Hours</h1>
+            <h5 class="text-primary text-uppercase">Horario de clases</h5>
+            <h1 class="display-3 text-uppercase mb-0">Horas</h1>
         </div>
         <div class="tab-class text-center">
             <ul class="nav nav-pills d-inline-flex justify-content-center bg-dark text-uppercase rounded-pill mb-5">
                 <li class="nav-item">
-                    <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-1">Monday</a>
+                    <a class="nav-link rounded-pill text-white active" data-bs-toggle="pill" href="#tab-1">Lunes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-2">Tuesday</a>
+                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-2">Martes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-3">Wednesday</a>
+                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-3">Miércoles</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-4">Thursday</a>
+                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-4">Jueves</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-5">Friday</a>
+                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-5">Viernes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-6">Saturday</a>
+                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-6">Sábado</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-7">Sunday</a>
+                    <a class="nav-link rounded-pill text-white" data-bs-toggle="pill" href="#tab-7">Domingo</a>
                 </li>
             </ul>
             <div class="tab-content">
@@ -59,49 +59,49 @@
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">8.00am - 10.00am</h6>
-                                <h5 class="text-uppercase text-primary">Body Building</h5>
+                                <h5 class="text-uppercase text-primary">Tonificación</h5>
                                 <p class="text-uppercase text-secondary mb-0">James Taylor</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">10.00am - 12.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Cardio Program</h5>
+                                <h5 class="text-uppercase text-primary">Cardio</h5>
                                 <p class="text-uppercase text-secondary mb-0">Jack Sparrow</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">12.00pm - 2.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Weight Loose</h5>
+                                <h5 class="text-uppercase text-primary">Pérdida de peso</h5>
                                 <p class="text-uppercase text-secondary mb-0">Robert Smith</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">2.00pm - 4.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Fitness Program</h5>
+                                <h5 class="text-uppercase text-primary">Programa Fitness</h5>
                                 <p class="text-uppercase text-secondary mb-0">Adam Phillips</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">4.00pm - 6.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Crossfit Class</h5>
+                                <h5 class="text-uppercase text-primary">Crossfit</h5>
                                 <p class="text-uppercase text-secondary mb-0">James Alien</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">6.00pm - 8.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Muscle Building</h5>
+                                <h5 class="text-uppercase text-primary">Musculación</h5>
                                 <p class="text-uppercase text-secondary mb-0">Petter John</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">8.00pm - 10.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Yoga Class</h5>
+                                <h5 class="text-uppercase text-primary">Yoga</h5>
                                 <p class="text-uppercase text-secondary mb-0">Jessy Reo</p>
                             </div>
                         </div>
@@ -119,49 +119,49 @@
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">8.00am - 10.00am</h6>
-                                <h5 class="text-uppercase text-primary">Body Building</h5>
+                                <h5 class="text-uppercase text-primary">Tonificación</h5>
                                 <p class="text-uppercase text-secondary mb-0">James Taylor</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">10.00am - 12.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Cardio Program</h5>
+                                <h5 class="text-uppercase text-primary">Cardio</h5>
                                 <p class="text-uppercase text-secondary mb-0">Jack Sparrow</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">12.00pm - 2.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Weight Loose</h5>
+                                <h5 class="text-uppercase text-primary">Pérdida de peso</h5>
                                 <p class="text-uppercase text-secondary mb-0">Robert Smith</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">2.00pm - 4.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Fitness Program</h5>
+                                <h5 class="text-uppercase text-primary">Programa Fitness</h5>
                                 <p class="text-uppercase text-secondary mb-0">Adam Phillips</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">4.00pm - 6.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Crossfit Class</h5>
+                                <h5 class="text-uppercase text-primary">Crossfit</h5>
                                 <p class="text-uppercase text-secondary mb-0">James Alien</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">6.00pm - 8.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Muscle Building</h5>
+                                <h5 class="text-uppercase text-primary">Musculación</h5>
                                 <p class="text-uppercase text-secondary mb-0">Petter John</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">8.00pm - 10.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Yoga Class</h5>
+                                <h5 class="text-uppercase text-primary">Yoga</h5>
                                 <p class="text-uppercase text-secondary mb-0">Jessy Reo</p>
                             </div>
                         </div>
@@ -179,49 +179,49 @@
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">8.00am - 10.00am</h6>
-                                <h5 class="text-uppercase text-primary">Body Building</h5>
+                                <h5 class="text-uppercase text-primary">Tonificación</h5>
                                 <p class="text-uppercase text-secondary mb-0">James Taylor</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">10.00am - 12.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Cardio Program</h5>
+                                <h5 class="text-uppercase text-primary">Cardio</h5>
                                 <p class="text-uppercase text-secondary mb-0">Jack Sparrow</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">12.00pm - 2.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Weight Loose</h5>
+                                <h5 class="text-uppercase text-primary">Pérdida de peso</h5>
                                 <p class="text-uppercase text-secondary mb-0">Robert Smith</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">2.00pm - 4.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Fitness Program</h5>
+                                <h5 class="text-uppercase text-primary">Programa Fitness</h5>
                                 <p class="text-uppercase text-secondary mb-0">Adam Phillips</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">4.00pm - 6.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Crossfit Class</h5>
+                                <h5 class="text-uppercase text-primary">Crossfit</h5>
                                 <p class="text-uppercase text-secondary mb-0">James Alien</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">6.00pm - 8.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Muscle Building</h5>
+                                <h5 class="text-uppercase text-primary">Musculación</h5>
                                 <p class="text-uppercase text-secondary mb-0">Petter John</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">8.00pm - 10.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Yoga Class</h5>
+                                <h5 class="text-uppercase text-primary">Yoga</h5>
                                 <p class="text-uppercase text-secondary mb-0">Jessy Reo</p>
                             </div>
                         </div>
@@ -239,49 +239,49 @@
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">8.00am - 10.00am</h6>
-                                <h5 class="text-uppercase text-primary">Body Building</h5>
+                                <h5 class="text-uppercase text-primary">Tonificación</h5>
                                 <p class="text-uppercase text-secondary mb-0">James Taylor</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">10.00am - 12.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Cardio Program</h5>
+                                <h5 class="text-uppercase text-primary">Cardio</h5>
                                 <p class="text-uppercase text-secondary mb-0">Jack Sparrow</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">12.00pm - 2.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Weight Loose</h5>
+                                <h5 class="text-uppercase text-primary">Pérdida de peso</h5>
                                 <p class="text-uppercase text-secondary mb-0">Robert Smith</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">2.00pm - 4.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Fitness Program</h5>
+                                <h5 class="text-uppercase text-primary">Programa Fitness</h5>
                                 <p class="text-uppercase text-secondary mb-0">Adam Phillips</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">4.00pm - 6.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Crossfit Class</h5>
+                                <h5 class="text-uppercase text-primary">Crossfit</h5>
                                 <p class="text-uppercase text-secondary mb-0">James Alien</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">6.00pm - 8.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Muscle Building</h5>
+                                <h5 class="text-uppercase text-primary">Musculación</h5>
                                 <p class="text-uppercase text-secondary mb-0">Petter John</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">8.00pm - 10.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Yoga Class</h5>
+                                <h5 class="text-uppercase text-primary">Yoga</h5>
                                 <p class="text-uppercase text-secondary mb-0">Jessy Reo</p>
                             </div>
                         </div>
@@ -299,49 +299,49 @@
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">8.00am - 10.00am</h6>
-                                <h5 class="text-uppercase text-primary">Body Building</h5>
+                                <h5 class="text-uppercase text-primary">Tonificación</h5>
                                 <p class="text-uppercase text-secondary mb-0">James Taylor</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">10.00am - 12.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Cardio Program</h5>
+                                <h5 class="text-uppercase text-primary">Cardio</h5>
                                 <p class="text-uppercase text-secondary mb-0">Jack Sparrow</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">12.00pm - 2.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Weight Loose</h5>
+                                <h5 class="text-uppercase text-primary">Pérdida de peso</h5>
                                 <p class="text-uppercase text-secondary mb-0">Robert Smith</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">2.00pm - 4.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Fitness Program</h5>
+                                <h5 class="text-uppercase text-primary">Programa Fitness</h5>
                                 <p class="text-uppercase text-secondary mb-0">Adam Phillips</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">4.00pm - 6.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Crossfit Class</h5>
+                                <h5 class="text-uppercase text-primary">Crossfit</h5>
                                 <p class="text-uppercase text-secondary mb-0">James Alien</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">6.00pm - 8.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Muscle Building</h5>
+                                <h5 class="text-uppercase text-primary">Musculación</h5>
                                 <p class="text-uppercase text-secondary mb-0">Petter John</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">8.00pm - 10.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Yoga Class</h5>
+                                <h5 class="text-uppercase text-primary">Yoga</h5>
                                 <p class="text-uppercase text-secondary mb-0">Jessy Reo</p>
                             </div>
                         </div>
@@ -359,49 +359,49 @@
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">8.00am - 10.00am</h6>
-                                <h5 class="text-uppercase text-primary">Body Building</h5>
+                                <h5 class="text-uppercase text-primary">Tonificación</h5>
                                 <p class="text-uppercase text-secondary mb-0">James Taylor</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">10.00am - 12.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Cardio Program</h5>
+                                <h5 class="text-uppercase text-primary">Cardio</h5>
                                 <p class="text-uppercase text-secondary mb-0">Jack Sparrow</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">12.00pm - 2.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Weight Loose</h5>
+                                <h5 class="text-uppercase text-primary">Pérdida de peso</h5>
                                 <p class="text-uppercase text-secondary mb-0">Robert Smith</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">2.00pm - 4.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Fitness Program</h5>
+                                <h5 class="text-uppercase text-primary">Programa Fitness</h5>
                                 <p class="text-uppercase text-secondary mb-0">Adam Phillips</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">4.00pm - 6.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Crossfit Class</h5>
+                                <h5 class="text-uppercase text-primary">Crossfit</h5>
                                 <p class="text-uppercase text-secondary mb-0">James Alien</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">6.00pm - 8.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Muscle Building</h5>
+                                <h5 class="text-uppercase text-primary">Musculación</h5>
                                 <p class="text-uppercase text-secondary mb-0">Petter John</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">8.00pm - 10.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Yoga Class</h5>
+                                <h5 class="text-uppercase text-primary">Yoga</h5>
                                 <p class="text-uppercase text-secondary mb-0">Jessy Reo</p>
                             </div>
                         </div>
@@ -419,49 +419,49 @@
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">8.00am - 10.00am</h6>
-                                <h5 class="text-uppercase text-primary">Body Building</h5>
+                                <h5 class="text-uppercase text-primary">Tonificación</h5>
                                 <p class="text-uppercase text-secondary mb-0">James Taylor</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">10.00am - 12.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Cardio Program</h5>
+                                <h5 class="text-uppercase text-primary">Cardio</h5>
                                 <p class="text-uppercase text-secondary mb-0">Jack Sparrow</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">12.00pm - 2.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Weight Loose</h5>
+                                <h5 class="text-uppercase text-primary">Pérdida de peso</h5>
                                 <p class="text-uppercase text-secondary mb-0">Robert Smith</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">2.00pm - 4.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Fitness Program</h5>
+                                <h5 class="text-uppercase text-primary">Programa Fitness</h5>
                                 <p class="text-uppercase text-secondary mb-0">Adam Phillips</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">4.00pm - 6.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Crossfit Class</h5>
+                                <h5 class="text-uppercase text-primary">Crossfit</h5>
                                 <p class="text-uppercase text-secondary mb-0">James Alien</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">6.00pm - 8.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Muscle Building</h5>
+                                <h5 class="text-uppercase text-primary">Musculación</h5>
                                 <p class="text-uppercase text-secondary mb-0">Petter John</p>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <div class="bg-dark rounded text-center py-5 px-3">
                                 <h6 class="text-uppercase text-light mb-3">8.00pm - 10.00pm</h6>
-                                <h5 class="text-uppercase text-primary">Yoga Class</h5>
+                                <h5 class="text-uppercase text-primary">Yoga</h5>
                                 <p class="text-uppercase text-secondary mb-0">Jessy Reo</p>
                             </div>
                         </div>
