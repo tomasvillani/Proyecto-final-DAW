@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Route;
+
+Route::post('/enviar-correo', [ContactoController::class, 'enviarFormulario'])->name('enviar_correo');
 
 Route::get('/', function () {
     return view('welcome');

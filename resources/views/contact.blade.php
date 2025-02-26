@@ -54,19 +54,21 @@
         <div class="row g-0">
             <div class="col-lg-6">
                 <div class="bg-dark p-5">
-                    <form>
+                    <form id="contact-form" action="{{ route('enviar_correo') }}" method="POST">
+                        @csrf <!-- Token CSRF para seguridad -->
+                        
                         <div class="row g-3">
                             <div class="col-6">
-                                <input type="text" class="form-control bg-light border-0 px-4" placeholder="Tu nombre" style="height: 55px;">
+                                <input type="text" name="name" class="form-control bg-light border-0 px-4" placeholder="Tu nombre" required style="height: 55px;">
                             </div>
                             <div class="col-6">
-                                <input type="email" class="form-control bg-light border-0 px-4" placeholder="Tu correo electrónico" style="height: 55px;">
+                                <input type="email" name="email" class="form-control bg-light border-0 px-4" placeholder="Tu correo electrónico" required style="height: 55px;">
                             </div>
                             <div class="col-12">
-                                <input type="text" class="form-control bg-light border-0 px-4" placeholder="Asunto" style="height: 55px;">
+                                <input type="text" name="subject" class="form-control bg-light border-0 px-4" placeholder="Asunto" required style="height: 55px;">
                             </div>
                             <div class="col-12">
-                                <textarea class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Mensaje"></textarea>
+                                <textarea name="message" class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Mensaje" required></textarea>
                             </div>
                             <div class="col-12">
                                 <button class="btn btn-primary w-100 py-3" type="submit">Enviar</button>
