@@ -36,7 +36,7 @@
                             <a class="text-secondary mb-2" href="/about"><i class="bi bi-arrow-right text-primary me-2"></i>Sobre Nosotros</a>
                             <a class="text-secondary mb-2" href="/classes"><i class="bi bi-arrow-right text-primary me-2"></i>Horarios</a>
                             <a class="text-secondary mb-2" href="/trainers"><i class="bi bi-arrow-right text-primary me-2"></i>Personal</a>
-                            <a class="text-secondary mb-2" href="/blog"><i class="bi bi-arrow-right text-primary me-2"></i>Eventos</a>
+                            <a class="text-secondary mb-2" href="/events"><i class="bi bi-arrow-right text-primary me-2"></i>Eventos</a>
                             <a class="text-secondary" href="/contact"><i class="bi bi-arrow-right text-primary me-2"></i>Contacto</a>
                         </div>
                     </div>
@@ -47,10 +47,11 @@
                     <h4 class="text-uppercase text-white mb-4">Newsletter</h4>
                     <h6 class="text-uppercase text-white">Suscríbete a nuestro Newsletter</h6>
                     <p class="text-light">Para estar al tanto de todos los eventos de nuestro gimnasio</p>
-                    <form action="">
+                    <form action="{{ route('inscribirse') }}" method="POST">
+                        @csrf
                         <div class="input-group">
-                            <input type="text" class="form-control border-white p-3" placeholder="Tu Email">
-                            <button class="btn btn-dark">Inscribirse</button>
+                            <input type="email" class="form-control border-white p-3" name="email" placeholder="Tu Email" required>
+                            <button class="btn btn-dark" type="POST">Inscribirse</button>
                         </div>
                     </form>
                 </div>

@@ -1,15 +1,15 @@
-@extends('layouts/layout')
+@extends('layouts.layout')
 
-@section('title','Blog Grid')
+@section('title','Eventos')
 
 @section('content')
     <!-- Hero Start -->
     <div class="container-fluid bg-primary p-5 bg-hero mb-5">
         <div class="row py-5">
             <div class="col-12 text-center">
-                <h1 class="display-2 text-uppercase text-white mb-md-4">Blog Grid</h1>
-                <a href="/" class="btn btn-primary py-md-3 px-md-5 me-3">Home</a>
-                <a href="/blog" class="btn btn-light py-md-3 px-md-5">Blog</a>
+                <h1 class="display-2 text-uppercase text-white mb-md-4">Eventos</h1>
+                <a href="/" class="btn btn-primary py-md-3 px-md-5 me-3">Inicio</a>
+                <a href="/events" class="btn btn-light py-md-3 px-md-5">Eventos</a>
             </div>
         </div>
     </div>

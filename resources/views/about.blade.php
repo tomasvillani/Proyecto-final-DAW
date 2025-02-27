@@ -1,6 +1,6 @@
-@extends('layouts/layout')
+@extends('layouts.layout')
 
-@section('title','About Us')
+@section('title','Sobre Nosotros')
 
 @section('content')
     <!-- Hero Start -->
@@ -21,7 +21,7 @@
         <div class="row gx-5">
             <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
                 <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100 rounded" src="img/about.jpg" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100 rounded" src="img/ubicacion_gimnasio.png" style="object-fit: cover;">
                 </div>
             </div>
             <div class="col-lg-7">
@@ -37,7 +37,7 @@
                             <a class="nav-link text-uppercase text-center w-100 active" data-bs-toggle="pill" href="#pills-1">Sobre Nosotros</a>
                         </li>
                         <li class="nav-item w-50">
-                                <a class="nav-link text-uppercase text-center w-100" data-bs-toggle="pill" href="#pills-2">Por qué elegirnos</a>
+                            <a class="nav-link text-uppercase text-center w-100" data-bs-toggle="pill" href="#pills-2">Por qué elegirnos</a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -81,7 +81,7 @@
             </div>
             <div class="col-lg-12 col-md-6 text-center">
                 <h1 class="text-uppercase text-light mb-4">30% Descuento para residentes</h1>
-                <a href="" class="btn btn-primary py-3 px-5">Inscríbete</a>
+                <a href="/login" class="btn btn-primary py-3 px-5">Inscríbete</a>
             </div>
         </div>
     </div>

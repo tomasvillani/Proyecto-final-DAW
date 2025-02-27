@@ -23,4 +23,22 @@ class ContactoController extends Controller
 
         return back()->with('success', 'Correo enviado correctamente');
     }
+
+    public function inscribirse(Request $request)
+    {
+        // Validación de los datos
+        $request->validate([
+            'email' => 'required|email|max:255'
+        ]);
+
+        $datos = [
+            'email' => $request->email,  // Ejemplo de lo que puede ser 'datos'
+            'tipo' => 'inscripcion',  // Indicar que es una inscripción
+        ];
+
+        // Enviar el correo
+        Mail::to($request->email)->send(new ContactoMailable($datos));
+
+        return back()->with('success', 'Correo enviado correctamente');
+    }
 }

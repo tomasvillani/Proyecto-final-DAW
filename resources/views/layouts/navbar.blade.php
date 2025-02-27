@@ -22,20 +22,14 @@
                             <a href="/about" class="nav-item nav-link">Sobre Nosotros</a>
                             <a href="/classes" class="nav-item nav-link">Clases</a>
                             <a href="/trainers" class="nav-item nav-link">Personal</a>
-                            <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Interés</a>
-                                <div class="dropdown-menu">
-                                    <a href="/blog" class="dropdown-item">Eventos</a>
-                                    <a href="/testimonial" class="dropdown-item">Reseñas</a>
-                                </div>
-                            </div>
+                            <a href="/events" class="nav-item nav-link">Eventos</a>
                             <a href="/contact" class="nav-item nav-link">Contacto</a>
                         </div>
                     </div>
 
                     <!-- BOTÓN JOIN US (Solo visible en pantallas grandes) -->
                     <div class="col-lg-3 d-none d-lg-block text-end">
-                        <a href="" class="btn btn-primary py-md-3 px-md-5">Inscríbete</a>
+                        <a href="/login" class="btn btn-primary py-md-3 px-md-5">Inscríbete</a>
                     </div>
 
                 </div>

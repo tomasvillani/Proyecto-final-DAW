@@ -1,124 +1,285 @@
 /* Botón de volver arriba */
 .back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
+position: fixed;
+bottom: 20px;
+right: 20px;
+z-index: 1000;
 }
 
 /* Botón flotante del chatbot */
 #chatbot-icon {
-    position: fixed;
-    bottom: 100px; /* Se mueve más arriba */
-    right: 20px;
-    background-color: #007bff;
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1000;
+position: fixed;
+bottom: 100px; /* Se mueve más arriba */
+right: 20px;
+background-color: #007bff;
+color: white;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 24px;
+cursor: pointer;
+z-index: 1000;
 }
 
 #chatbot-container {
-    display: none; /* Mantenerlo oculto por defecto */
-    position: fixed;
-    bottom: 60px; /* Ajusta según lo necesites */
-    right: 20px; /* Ajusta según lo necesites */
-    width: 350px;
-    height: 600px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    z-index: 9999;
-    transform: translateY(100%); /* Empuja el chatbot hacia abajo (fuera de la pantalla) */
-    opacity: 0; /* Comienza transparente */
-    transition: transform 0.3s ease, opacity 0.3s ease; /* Animación suave para mostrar/ocultar */
-    flex-direction: column;
-    justify-content: space-between; /* Distribuye los elementos */
+display: none; /* Mantenerlo oculto por defecto */
+position: fixed;
+bottom: 60px; /* Ajusta según lo necesites */
+right: 20px; /* Ajusta según lo necesites */
+width: 350px;
+height: 600px;
+background-color: #fff;
+border: 1px solid #ccc;
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+z-index: 9999;
+transform: translateY(100%); /* Empuja el chatbot hacia abajo (fuera de la pantalla) */
+opacity: 0; /* Comienza transparente */
+transition: transform 0.3s ease, opacity 0.3s ease; /* Animación suave para mostrar/ocultar */
+flex-direction: column;
+justify-content: space-between; /* Distribuye los elementos */
 }
 
 #chatbot-container.show {
-    transform: translateY(0); /* Vuelve a su posición original */
-    opacity: 1; /* Se hace completamente visible */
+transform: translateY(0); /* Vuelve a su posición original */
+opacity: 1; /* Se hace completamente visible */
 }
 
 #chatbot-header {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    font-size: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 2px solid #007bff;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+background-color: #007bff;
+color: white;
+padding: 10px;
+font-size: 16px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+border: 2px solid #007bff;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
 }
 
 #chatbot-messages {
-    padding: 10px;
-    height: 480px;
-    overflow-y: auto;
-    flex: 1; /* Hace que ocupe el espacio disponible */
+padding: 10px;
+height: 480px;
+overflow-y: auto;
+flex: 1; /* Hace que ocupe el espacio disponible */
 }
 
 #chatbot-input {
-    flex: 1; /* Ocupa todo el espacio disponible */
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
+flex: 1; /* Ocupa todo el espacio disponible */
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 5px;
+outline: none;
 }
 
 .owl-carousel .owl-item img{
-    width:90px;
+width:90px;
 }
 
 #send-button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    margin-left: 10px; /* Espacio entre input y botón */
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+background: #007bff;
+color: white;
+border: none;
+padding: 8px 12px;
+margin-left: 10px; /* Espacio entre input y botón */
+border-radius: 5px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
 #send-button i {
-    font-size: 16px;
+font-size: 16px;
 }
 
 #chatbot-input-container {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    border-top: 1px solid #ccc;
-    background: #fff;
+display: flex;
+align-items: center;
+padding: 10px;
+border-top: 1px solid #ccc;
+background: #fff;
 }
 
 .typing span {
-    animation: blink 1.5s infinite;
+animation: blink 1.5s infinite;
 }
 
 .typing span:nth-child(2) {
-    animation-delay: 0.3s;
+animation-delay: 0.3s;
 }
 
 .typing span:nth-child(3) {
-    animation-delay: 0.6s;
+animation-delay: 0.6s;
 }
 
 @keyframes blink {
-    0% { opacity: 0; }
-    50% { opacity: 1; }
-    100% { opacity: 0; }
+0% { opacity: 0; }
+50% { opacity: 1; }
+100% { opacity: 0; }
+}
+
+/* resources/css/styles.css */
+.star-border {
+position: relative;
+display: inline-block;
+padding: 20px;
+background: var(--dark); /* Gris oscuro para el fondo */
+color: var(--light); /* Blanco suave para el texto */
+text-align: center;
+border-radius: 8px;
+box-sizing: border-box;
+}
+
+.star-border::before,
+.star-border::after {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background: linear-gradient(45deg, var(--primary), var(--secondary), var(--primary), var(--secondary)); /* Gradiente de azules brillantes y oscuros */
+background-size: 400% 400%;
+border-radius: 8px;
+z-index: -1;
+animation: starEffect 2s linear infinite;
+}
+
+@keyframes starEffect {
+0% {
+transform: scale(1);
+opacity: 0.5;
+}
+50% {
+transform: scale(1.2);
+opacity: 1;
+}
+100% {
+transform: scale(1);
+opacity: 0.5;
+}
+}
+
+.star-border h1 {
+font-size: 36px;
+margin: 0;
+}
+
+:root {
+--primary: #1e88e5; /* Azul brillante */
+--secondary: #0d47a1; /* Azul oscuro */
+--light: #F4F5F8; /* Blanco suave */
+--dark: #222429; /* Gris oscuro */
+}
+
+/* Estilo inicial de los items de hora */
+.hora-item {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+cursor: pointer;
+}
+
+/* Efecto hover: aumenta el tamaño del div ligeramente */
+.hora-item:hover {
+transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Añade una sombra sutil */
+}
+
+/* From Uiverse.io by alexruix */ 
+.form-box {
+max-width: 300px;
+background: #f1f7fe;
+overflow: hidden;
+border-radius: 16px;
+color: #010101;
+}
+
+.form {
+position: relative;
+display: flex;
+flex-direction: column;
+padding: 32px 24px 24px;
+gap: 16px;
+text-align: center;
+}
+
+/*Form text*/
+.title {
+font-weight: bold;
+font-size: 1.6rem;
+}
+
+.subtitle {
+font-size: 1rem;
+color: #666;
+}
+
+/*Inputs box*/
+.form-container {
+overflow: hidden;
+border-radius: 8px;
+background-color: #fff;
+margin: 1rem 0 .5rem;
+width: 100%;
+}
+
+.input {
+background: none;
+border: 0;
+outline: 0;
+height: 40px;
+width: 100%;
+border-bottom: 1px solid #eee;
+font-size: .9rem;
+padding: 8px 15px;
+}
+
+.form-section {
+padding: 16px;
+font-size: .85rem;
+background-color: #e0ecfb;
+box-shadow: rgb(0 0 0 / 8%) 0 -1px;
+}
+
+.form-section a {
+font-weight: bold;
+color: #0066ff;
+transition: color .3s ease;
+}
+
+.form-section a:hover {
+color: #005ce6;
+text-decoration: underline;
+}
+
+/*Button*/
+.form button {
+background-color: #0066ff;
+color: #fff;
+border: 0;
+border-radius: 24px;
+padding: 10px 16px;
+font-size: 1rem;
+font-weight: 600;
+cursor: pointer;
+transition: background-color .3s ease;
+}
+
+.form button:hover {
+background-color: #005ce6;
+}
+
+/* Elimina el borde naranja (outline) en los campos de entrada cuando están en foco */
+input:focus, select:focus, textarea:focus {
+outline: none;
+box-shadow: none;
+}
+
+.form-control:focus{
+    outline: none;
+    box-shadow: none;
 }

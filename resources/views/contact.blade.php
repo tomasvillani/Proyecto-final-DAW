@@ -1,6 +1,6 @@
-@extends('layouts/layout')
+@extends('layouts.layout')
 
-@section('title','Contact')
+@section('title','Contacto')
 
 @section('content')
     <!-- Hero Start -->
