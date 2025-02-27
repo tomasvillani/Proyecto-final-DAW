@@ -5,10 +5,10 @@
 @section('content')
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="form-box p-4" style="max-width: 400px; width: 100%; margin-top: 20px;">
-        <form method="POST" action="{{ route('login') }}" class="form">
+        <form method="POST" action="/login" class="form">
             @csrf
             <h2 class="text-center">Iniciar sesión</h2>
-            <p class="text-center text-muted">Accede a tu cuenta con tu correo electrónico.</p>
+            <p class="text-center text-muted">Accede a tu cuenta con tu DNI.</p>
             
             <div class="form-container mt-4">
                 <div class="mb-3">
@@ -29,9 +29,9 @@
                 </div>
                 
                 <!-- Remember Me -->
-                <div class="mb-3 form-check">
+                <div class="mb-3 form-check d-flex align-items-center justify-content-center">
                     <input id="remember_me" type="checkbox" class="form-check-input" name="remember">
-                    <label class="form-check-label" for="remember_me">Recordarme</label>
+                    <label class="form-check-label ms-2 mb-0" for="remember_me">Recordarme</label>
                 </div>
             </div>
 

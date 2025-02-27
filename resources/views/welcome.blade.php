@@ -13,7 +13,7 @@
                         <div class="p-3" style="max-width: 900px;">
                             <h5 class="text-white text-uppercase">El Mejor Centro de Gimnasio</h5>
                             <h1 class="display-2 text-white text-uppercase mb-md-4">Fortalece Tu Cuerpo Con Nosotros</h1>
-                            <a href="/login" class="btn btn-primary py-md-3 px-md-5 me-3 star-border">Únete</a>
+                            <a href="/register" class="btn btn-primary py-md-3 px-md-5 me-3 star-border">Únete</a>
                             <a href="/contact" class="btn btn-light py-md-3 px-md-5">Contáctanos</a>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                         <div class="p-3" style="max-width: 900px;">
                             <h5 class="text-white text-uppercase">El Mejor Centro de Gimnasio</h5>
                             <h1 class="display-2 text-white text-uppercase mb-md-4">Aumenta Tu Fuerza Con Nuestros Entrenadores</h1>
-                            <a href="/login" class="btn btn-primary py-md-3 px-md-5 me-3 star-border">Únete</a>
+                            <a href="/register" class="btn btn-primary py-md-3 px-md-5 me-3 star-border">Únete</a>
                             <a href="/contact" class="btn btn-light py-md-3 px-md-5">Contáctanos</a>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
             </div>
             <div class="col-lg-12 col-md-6 text-center">
                 <h1 class="text-uppercase text-light mb-4">30% Descuento para residentes</h1>
-                <a href="/login" class="btn btn-primary py-3 px-5">Inscríbete</a>
+                <a href="/register" class="btn btn-primary py-3 px-5">Inscríbete</a>
             </div>
         </div>
     </div>

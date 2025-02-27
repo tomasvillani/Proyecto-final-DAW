@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->string('dni')->primary();
+            // Cambiar la clave primaria a 'id' y hacer 'dni' único
+            $table->id();  // Este es el campo 'id' como clave primaria
+            $table->string('dni')->unique();  // Hacer 'dni' único
             $table->string('name');
             $table->string('surname');
             $table->string('email')->unique();

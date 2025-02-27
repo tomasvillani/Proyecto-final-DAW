@@ -29,7 +29,7 @@
 
                     <!-- BOTÓN JOIN US (Solo visible en pantallas grandes) -->
                     <div class="col-lg-3 d-none d-lg-block text-end">
-                        <a href="/login" class="btn btn-primary py-md-3 px-md-5">Inscríbete</a>
+                        <a href="/register" class="btn btn-primary py-md-3 px-md-5">Inscríbete</a>
                     </div>
 
                 </div>

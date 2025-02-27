@@ -29,22 +29,49 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // Mensajes personalizados
+        $messages = [
+            'dni.required' => 'El campo DNI es obligatorio.',
+            'dni.unique' => 'El DNI ingresado ya está registrado.',
+            'dni.dni_espanol' => 'El DNI ingresado no es válido.',
+            'name.required' => 'El campo nombre es obligatorio.',
+            'surname.required' => 'El campo apellido es obligatorio.',
+            'email.required' => 'El campo correo electrónico es obligatorio.',
+            'email.email' => 'El correo electrónico debe ser válido.',
+            'email.unique' => 'Este correo electrónico ya está registrado.',
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.confirmed' => 'Las contraseñas no coinciden.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+        ];
+        
+        // Validación de datos con mensajes personalizados
         $request->validate([
+            'dni' => ['required', 'string', 'unique:users', 'dni_espanol'],
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'surname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+        ], $messages);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        // Creación del usuario
+        $user = new User();
+        $user->dni = $request->dni;
+        $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        
+        $user->save();
 
+        // Evento de registro
         event(new Registered($user));
 
+        // Iniciar sesión del usuario
         Auth::login($user);
 
+        // Redirigir a la página del dashboard
         return redirect(route('dashboard', absolute: false));
     }
+
 }
+

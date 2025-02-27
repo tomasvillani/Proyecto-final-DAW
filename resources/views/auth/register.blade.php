@@ -65,11 +65,7 @@
                     @endif
                 </div>
 
-                <div class="d-flex justify-content-between align-items-center mt-4 mx-3">
-                    <a class="text-muted" href="{{ route('login') }}">
-                        ¿Ya tienes cuenta?
-                    </a>
-
+                <div class="d-flex justify-content-center align-items-center mt-4 mx-3">
                     <button type="submit" class="btn btn-primary">
                         Registrarse
                     </button>

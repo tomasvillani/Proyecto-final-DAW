@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Tarifa;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +17,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'dni',         // Asegúrate de agregar 'dni' en el fillable
         'name',
+        'surname',     // Asegúrate de agregar 'surname'
         'email',
         'password',
     ];
