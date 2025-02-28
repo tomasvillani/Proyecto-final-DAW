@@ -1,10 +1,10 @@
 @extends('layouts.layout')
 
-@section('title', 'Perfil del Usuario')
+@section('title', Auth::user()->tipo_usuario == "admin" ? "Perfil del Administrador" : "Perfil del Usuario")
 
 @section('content')
 <div class="container my-5">
-    <h2 class="text-center mb-4">Perfil del Usuario</h2>
+    <h2 class="text-center mb-4">{{ Auth::user()->tipo_usuario == "admin" ? "Perfil del Administrador" : "Perfil del Usuario" }}</h2>
 
     <div class="row justify-content-center">
         <div class="col-lg-8">

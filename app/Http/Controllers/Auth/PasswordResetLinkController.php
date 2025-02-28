@@ -23,22 +23,29 @@ class PasswordResetLinkController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
             'email' => ['required', 'email'],
         ]);
 
-        // We will send the password reset link to this user. Once we have attempted
-        // to send the link, we will examine the response then see the message we
-        // need to show to the user. Finally, we'll send out a proper response.
+        // Intentamos enviar el enlace de restablecimiento de contraseña
         $status = Password::sendResetLink(
             $request->only('email')
         );
 
-        return $status == Password::RESET_LINK_SENT
-                    ? back()->with('status', __($status))
-                    : back()->withInput($request->only('email'))
-                        ->withErrors(['email' => __($status)]);
+        // Si el enlace fue enviado correctamente
+        if ($status == Password::RESET_LINK_SENT) {
+            return back()->with('status', __($status));
+        }
+
+        // Si el error es "throttled" (demasiados intentos)
+        if ($status == Password::THROTTLED) {
+            return back()->withErrors(['email' => __('Demasiados intentos. Por favor inténtalo más tarde en :seconds segundos.', ['seconds' => 60])]);
+        }
+
+        // Si hubo otro error
+        return back()->withInput($request->only('email'))
+                    ->withErrors(['email' => __($status)]);
     }
 }
