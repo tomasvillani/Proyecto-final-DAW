@@ -25,43 +25,41 @@
     @vite(['resources/js/app.js'])
 </head>
 
-<body>
-    <!-- Header Start -->
-    @include('layouts.navbar')
-    <!-- Header End -->
+    <body>
+        <!-- Header Start -->
+        @include('layouts.navbar')
+        <!-- Header End -->
 
+        @yield('content')
 
-    @yield('content')
-    
+        <!-- Footer Start -->
+        @include('layouts.footer')
+        <!-- Footer End -->
 
-    <!-- Footer Start -->
-    @include('layouts.footer')
-    <!-- Footer End -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
-
-    <!-- Botón flotante del chatbot -->
-    <div id="chatbot-icon">
-        <i class="fa-solid fa-robot" style="color: #ffffff;"></i>
-    </div>
-
-    <!-- Ventana del chatbot -->
-    <div id="chatbot-container">
-        <div id="chatbot-header">
-            <span>Chatbot Gym</span>
-            <i class="fa-solid fa-rectangle-xmark fa-xl"></i>
+        <!-- Botón flotante del chatbot -->
+        <div id="chatbot-icon">
+            <i class="fa-solid fa-robot" style="color: #ffffff;"></i>
         </div>
-        <div id="chatbot-messages"></div>
-        <div id="chatbot-input-container">
-            <input type="text" id="chatbot-input" placeholder="Escribe un mensaje...">
-            <button id="send-button">
-                <i class="fa-solid fa-paper-plane"></i>
-            </button>
-        </div>
-    </div>
 
-</body>
+        <!-- Ventana del chatbot -->
+        <div id="chatbot-container">
+            <div id="chatbot-header">
+                <span>Chatbot Gym</span>
+                <i class="fa-solid fa-rectangle-xmark fa-xl"></i>
+            </div>
+            <div id="chatbot-messages"></div>
+            <div id="chatbot-input-container">
+                <input type="text" id="chatbot-input" placeholder="Escribe un mensaje...">
+                <button id="send-button">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+    </body>
+
 
 </html>

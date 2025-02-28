@@ -283,3 +283,57 @@ box-shadow: none;
     outline: none;
     box-shadow: none;
 }
+
+.custom-save-button {
+    background-color: #007bff; /* Cambia el color del fondo */
+    color: white; /* Cambia el color del texto */
+    border-radius: 0.375rem;
+    border: none; /* Sin borde */
+}
+
+.custom-save-button:hover {
+    background-color: #0056b3; /* Color de fondo al pasar el ratón */
+}
+
+.custom-save-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.5); /* Añadir foco */
+}
+
+.custom-save-button-2 {
+    background-color: #d1d5db; /* Gris claro */
+    color: black !important; /* Forzar el texto en negro */
+    border-radius: 0.375rem;
+    border: none; /* Sin borde */
+}
+
+.custom-save-button-2:hover {
+    background-color: #9ca3af; /* Gris más oscuro al pasar el ratón */
+}
+
+.custom-save-button-2:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3); /* Sombra al enfocar */
+}
+
+/* En tu archivo CSS o dentro de <style> */
+.custom-danger-button {
+    background-color: #e53e3e; /* Rojo (bg-red-600) */
+    color: white; /* Texto blanco */
+    padding: 0.5rem 1rem; /* Un poco de padding */
+    border-radius: 0.375rem; /* Bordes redondeados */
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.custom-danger-button:hover {
+    background-color: #c53030; /* Rojo más oscuro (bg-red-700) */
+}
+
+.custom-danger-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.5); /* Acento rojo alrededor cuando se hace foco */
+    transform: scale(1.05); /* Efecto de aumento al hacer foco */
+}

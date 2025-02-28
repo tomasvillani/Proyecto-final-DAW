@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'surname',     // Asegúrate de agregar 'surname'
         'email',
+        'tipo_usuario',
         'password',
     ];
 
