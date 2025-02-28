@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Restablecer Contraseña')
+@section('title', 'Email Restablecer Contraseña')
 
 @section('content')
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">

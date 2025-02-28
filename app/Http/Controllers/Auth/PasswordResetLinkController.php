@@ -41,7 +41,7 @@ class PasswordResetLinkController extends Controller
 
         // Si el error es "throttled" (demasiados intentos)
         if ($status == Password::THROTTLED) {
-            return back()->withErrors(['email' => __('Demasiados intentos. Por favor inténtalo más tarde en :seconds segundos.', ['seconds' => 60])]);
+            return back()->withErrors(['email' => __('Demasiados intentos. Por favor inténtalo más tarde en :seconds segundos.', ['seconds' => 00])]);
         }
 
         // Si hubo otro error
