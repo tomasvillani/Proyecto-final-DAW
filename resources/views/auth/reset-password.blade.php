@@ -5,11 +5,10 @@
 @section('content')
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="form-box p-4" style="max-width: 400px; width: 100%; margin-top: 20px;">
-        <form method="POST" action="{{ route('password.update') }}" class="form">
+        <form method="POST" action="{{ route('password.store') }}" class="form">
             @csrf
-
             <!-- Password Reset Token -->
-            <input type="hidden" name="token" value="{{ $request->route('token') }}">
+            <input type="hidden" name="token" value="{{ request()->route('token') }}">
 
             <h2 class="text-center">Restablecer Contraseña</h2>
             <p class="text-center text-muted">Introduce tu nueva contraseña y confirma la nueva contraseña.</p>
@@ -17,7 +16,7 @@
             <!-- Email Address -->
             <div class="mb-3">
                 <label for="email" class="form-label">Correo Electrónico</label>
-                <input id="email" class="form-control input" type="email" name="email" value="{{ old('email', $request->email) }}" required autocomplete="email" placeholder="Correo electrónico">
+                <input id="email" class="form-control input" type="email" name="email" value="{{ old('email', request()->email) }}" required autocomplete="email" placeholder="Correo electrónico">
                 @if ($errors->has('email'))
                     <div class="text-danger mt-2">{{ $errors->first('email') }}</div>
                 @endif
