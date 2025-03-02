@@ -14,8 +14,8 @@
                         </div>
                         <div class="d-flex mt-4">
                             <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-whatsapp fa-lg"></i></a>
-                            <a class="btn btn-primary btn-square rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-square rounded-circle" href="#"><i class="fab fa-instagram"></i></a>
+                            <a class="btn btn-primary btn-square rounded-circle me-2" href="https://es-es.facebook.com/GimnasioTinajo"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-square rounded-circle" href="https://www.instagram.com/gymtinajo/"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-12 pt-0 pt-lg-5 mb-5">
