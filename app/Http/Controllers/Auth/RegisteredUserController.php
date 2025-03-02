@@ -39,6 +39,7 @@ class RegisteredUserController extends Controller
             'email.required' => 'El campo correo electrónico es obligatorio.',
             'email.email' => 'El correo electrónico debe ser válido.',
             'email.unique' => 'Este correo electrónico ya está registrado.',
+            'email.regex' => 'El correo electrónico debe tener el formato texto@texto.dominio.',
             'password.required' => 'La contraseña es obligatoria.',
             'password.confirmed' => 'Las contraseñas no coinciden.',
             'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
@@ -49,7 +50,15 @@ class RegisteredUserController extends Controller
             'dni' => ['required', 'string', 'unique:users', 'dni_espanol'],
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users'],
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'lowercase',
+                'max:255',
+                'unique:users',
+                'regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/',
+            ],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ], $messages);
 
