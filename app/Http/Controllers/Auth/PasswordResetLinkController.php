@@ -25,27 +25,24 @@ class PasswordResetLinkController extends Controller
      */
     public function store(Request $request)
     {
+        // Validar email
         $request->validate([
             'email' => ['required', 'email'],
         ]);
 
-        // Intentamos enviar el enlace de restablecimiento de contraseña
+        // Intentar enviar el enlace de restablecimiento
         $status = Password::sendResetLink(
             $request->only('email')
         );
 
         // Si el enlace fue enviado correctamente
         if ($status == Password::RESET_LINK_SENT) {
-            return back()->with('status', __($status));
+            return back()->with('status', __('Se ha enviado el enlace para restablecer la contraseña.'));
         }
 
-        // Si el error es "throttled" (demasiados intentos)
-        if ($status == Password::THROTTLED) {
-            return back()->withErrors(['email' => __('Demasiados intentos. Por favor inténtalo más tarde en :seconds segundos.', ['seconds' => 00])]);
-        }
-
-        // Si hubo otro error
+        // Si hubo un error con el email (por ejemplo, no existe en la base de datos)
         return back()->withInput($request->only('email'))
-                    ->withErrors(['email' => __($status)]);
+                    ->withErrors(['email' => __('No se encuentra ningún usuario con ese correo electrónico.')]);
     }
+
 }
