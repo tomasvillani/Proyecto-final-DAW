@@ -18,16 +18,30 @@
                 <!-- MENÚ DE NAVEGACIÓN -->
                 <div class="collapse navbar-collapse justify-content-around" id="navbarCollapse">
                     <div class="navbar-nav text-center">
-                        <a href="/" class="nav-item nav-link">Inicio</a>
-                        <a href="/about" class="nav-item nav-link">Sobre Nosotros</a>
-                        <a href="/classes" class="nav-item nav-link">Clases</a>
-                        <a href="/trainers" class="nav-item nav-link">Personal</a>
-                        <a href="/events" class="nav-item nav-link">Eventos</a>
-                        <a href="/contact" class="nav-item nav-link">Contacto</a>
+                        @if (Auth::check() && Auth::user()->tipo_usuario == 'admin')
+                            <!-- SOLO PARA ADMIN -->
+                            <a href="/clientes" class="nav-item nav-link">Clientes</a>
+                            <a href="/reservas" class="nav-item nav-link">Reservas</a>
+                            <a href="/edit-events" class="nav-item nav-link">Eventos</a>
 
-                        <!-- Enlace Mis Reservas solo si el usuario es 'cliente' -->
-                        @if (Auth::check() && Auth::user()->tipo_usuario == 'cliente')
-                            <a href="/reservas" class="nav-item nav-link">Mis Reservas</a>
+                        @elseif (Auth::check() && Auth::user()->tipo_usuario == 'cliente')
+                            <!-- SOLO PARA CLIENTES -->
+                            <a href="/" class="nav-item nav-link">Inicio</a>
+                            <a href="/about" class="nav-item nav-link">Sobre Nosotros</a>
+                            <a href="/classes" class="nav-item nav-link">Clases</a>
+                            <a href="/trainers" class="nav-item nav-link">Personal</a>
+                            <a href="/events" class="nav-item nav-link">Eventos</a>
+                            <a href="/contact" class="nav-item nav-link">Contacto</a>
+                            <a href="/mis-reservas" class="nav-item nav-link">Mis Reservas</a>
+
+                        @else
+                            <!-- SOLO PARA INVITADOS (NO LOGUEADOS) -->
+                            <a href="/" class="nav-item nav-link">Inicio</a>
+                            <a href="/about" class="nav-item nav-link">Sobre Nosotros</a>
+                            <a href="/classes" class="nav-item nav-link">Clases</a>
+                            <a href="/trainers" class="nav-item nav-link">Personal</a>
+                            <a href="/events" class="nav-item nav-link">Eventos</a>
+                            <a href="/contact" class="nav-item nav-link">Contacto</a>
                         @endif
                     </div>
                 </div>

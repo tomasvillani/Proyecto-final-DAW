@@ -9,7 +9,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/icono_gym.png" rel="icon">
+    <link href="{{ asset('img/icono_gym.png') }}" rel="icon">
     <script src="https://kit.fontawesome.com/4dd134ba8a.js" crossorigin="anonymous"></script>
 
     <!-- Google Web Fonts -->
