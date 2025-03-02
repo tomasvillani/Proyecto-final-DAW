@@ -57,38 +57,45 @@ document.addEventListener("DOMContentLoaded", function () {
         chatbotContainer.classList.remove("active");
     });
 
-    const api_key = "O4MWBzixAdoAz8R3mhAEGAgpAXjmqj5sJXb1OHOD";
+    const api_key = "O4MWBzixAdoAz8R3mhAEGAgpAXjmqj5sJXb1OHOD"; // API Key Cohere
+    let chatHistory = []; // Guarda el historial de mensajes
 
     function sendMessage() {
         let userMessage = chatbotInput.value.trim();
         if (userMessage === "") return;
 
-        // Mostrar el mensaje del usuario en el chat
         appendMessage("Tú", userMessage, "user-message");
 
         chatbotInput.value = "";
         chatbotInput.disabled = true;
         sendButton.disabled = true;
 
-        // Agregar mensaje de "Escribiendo..."
         let loadingMessage = appendMessage("GymBot", "<span class='typing'>Escribiendo<span>.</span><span>.</span><span>.</span></span>", "bot-message-loading");
 
-        // Preparar los datos de la solicitud
+        // Guardar la conversación en el historial
+        chatHistory.push({ role: "USER", message: userMessage });
+
         const requestData = {
-            model: "command-xlarge-nightly",
-            prompt: `Eres un chatbot de gimnasio que ayuda a los usuarios con entrenamientos, dietas y rutinas. Responde brevemente, de forma amigable y útil a las preguntas relacionadas con el fitness y la salud. 
-            Cuando te pidan una rutina de ejercicios, responde en un formato esquemático, usando listas y este estilo:  
-            Ejercicio – series x repeticiones  
+            model: "command-r-plus",
+            message: userMessage,
+            temperature: 0.7,
+            chat_history: chatHistory,
+            preamble: `Eres GymBot, un asistente virtual especializado en gimnasio, fitness y nutrición. 
+            Tu objetivo es ayudar a los usuarios con rutinas de ejercicio, dietas y consejos saludables. 
+            Responde siempre de manera corta, amigable y útil.
+            
+            Cuando alguien te pida una rutina de entrenamiento, responde con el siguiente formato:
+            
+            Ejercicio : series x repeticiones  
             Por ejemplo:  
-            - Sentadillas – 4x12  
-            - Flexiones – 3x15  
-            - Plancha – 3x30s  
-            Pregunta: "${userMessage}"`,
-            max_tokens: 900,
-            temperature: 0.7
+            - Sentadillas : 4x12  
+            - Flexiones : 3x15  
+            - Plancha : 3x30s  
+
+            Si te preguntan sobre dietas, ofrece opciones de comidas saludables para ganar masa muscular o perder grasa.`
         };
 
-        fetch("https://api.cohere.ai/v1/generate", {
+        fetch("https://api.cohere.ai/v1/chat", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -98,19 +105,20 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(response => response.json())
         .then(data => {
-            if (data && data.generations && data.generations[0]) {
-                const botMessage = data.generations[0].text.trim();
-                // Reemplazar el mensaje de "Escribiendo..." con la respuesta real
+            if (data.text) {
+                const botMessage = data.text.trim();
+
                 loadingMessage.innerHTML = `<strong>GymBot:</strong> ${botMessage}`;
-                loadingMessage.classList.remove("loading");
+                loadingMessage.classList.remove("bot-message-loading");
+
+                chatHistory.push({ role: "CHATBOT", message: botMessage });
             } else {
-                console.error("Error: Respuesta inesperada de la API", data);
-                loadingMessage.innerHTML = `<strong>GymBot:</strong> Hubo un error al procesar tu mensaje. Intenta de nuevo.`;
+                loadingMessage.innerHTML = `<strong>GymBot:</strong> Error al procesar tu mensaje.`;
             }
         })
         .catch(error => {
-            console.error("Error en la solicitud:", error);
-            loadingMessage.innerHTML = `<strong>GymBot:</strong> Hubo un error al procesar tu mensaje. Intenta de nuevo.`;
+            console.error("Error:", error);
+            loadingMessage.innerHTML = `<strong>GymBot:</strong> Error de conexión.`;
         })
         .finally(() => {
             chatbotInput.disabled = false;
@@ -133,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     sendButton.addEventListener("click", sendMessage);
 });
+
 
 
 window.Alpine = Alpine;
