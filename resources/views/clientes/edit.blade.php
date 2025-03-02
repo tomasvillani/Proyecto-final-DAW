@@ -6,7 +6,6 @@
     <!-- Edit Client Start -->
     <div class="container-fluid p-5">
         <div class="mb-5 text-center">
-            <h5 class="text-primary text-uppercase">Formulario de Edición</h5>
             <h1 class="display-3 text-uppercase mb-0">Editar Cliente</h1>
         </div>
 

@@ -6,7 +6,6 @@
     <!-- Create Client Start -->
     <div class="container-fluid p-5">
         <div class="mb-5 text-center">
-            <h5 class="text-primary text-uppercase">Formulario de Registro</h5>
             <h1 class="display-3 text-uppercase mb-0">Nuevo Cliente</h1>
         </div>
 
