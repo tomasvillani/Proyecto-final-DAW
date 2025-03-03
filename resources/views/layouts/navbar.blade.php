@@ -22,7 +22,7 @@
                             <!-- SOLO PARA ADMIN -->
                             <a href="/clientes" class="nav-item nav-link">Clientes</a>
                             <a href="/reservas" class="nav-item nav-link">Reservas</a>
-                            <a href="/edit-events" class="nav-item nav-link">Eventos</a>
+                            <a href="/eventos" class="nav-item nav-link">Eventos</a>
 
                         @elseif (Auth::check() && Auth::user()->tipo_usuario == 'cliente')
                             <!-- SOLO PARA CLIENTES -->
