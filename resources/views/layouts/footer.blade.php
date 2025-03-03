@@ -25,7 +25,7 @@
                             <a class="text-secondary mb-2" href="/about"><i class="bi bi-arrow-right text-primary me-2"></i>Sobre Nosotros</a>
                             <a class="text-secondary mb-2" href="/classes"><i class="bi bi-arrow-right text-primary me-2"></i>Horarios</a>
                             <a class="text-secondary mb-2" href="/trainers"><i class="bi bi-arrow-right text-primary me-2"></i>Personal</a>
-                            <a class="text-secondary mb-2" href="/events"><i class="bi bi-arrow-right text-primary me-2"></i>Eventos</a>
+                            <a class="text-secondary mb-2" href="/eventos"><i class="bi bi-arrow-right text-primary me-2"></i>Eventos</a>
                             <a class="text-secondary" href="/contact"><i class="bi bi-arrow-right text-primary me-2"></i>Contacto</a>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                             <a class="text-secondary mb-2" href="/about"><i class="bi bi-arrow-right text-primary me-2"></i>Sobre Nosotros</a>
                             <a class="text-secondary mb-2" href="/classes"><i class="bi bi-arrow-right text-primary me-2"></i>Horarios</a>
                             <a class="text-secondary mb-2" href="/trainers"><i class="bi bi-arrow-right text-primary me-2"></i>Personal</a>
-                            <a class="text-secondary mb-2" href="/events"><i class="bi bi-arrow-right text-primary me-2"></i>Eventos</a>
+                            <a class="text-secondary mb-2" href="/eventos"><i class="bi bi-arrow-right text-primary me-2"></i>Eventos</a>
                             <a class="text-secondary" href="/contact"><i class="bi bi-arrow-right text-primary me-2"></i>Contacto</a>
                         </div>
                     </div>

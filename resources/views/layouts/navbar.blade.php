@@ -30,7 +30,7 @@
                             <a href="/about" class="nav-item nav-link">Sobre Nosotros</a>
                             <a href="/classes" class="nav-item nav-link">Clases</a>
                             <a href="/trainers" class="nav-item nav-link">Personal</a>
-                            <a href="/events" class="nav-item nav-link">Eventos</a>
+                            <a href="/eventos" class="nav-item nav-link">Eventos</a>
                             <a href="/contact" class="nav-item nav-link">Contacto</a>
                             <a href="/mis-reservas" class="nav-item nav-link">Mis Reservas</a>
 
@@ -40,7 +40,7 @@
                             <a href="/about" class="nav-item nav-link">Sobre Nosotros</a>
                             <a href="/classes" class="nav-item nav-link">Clases</a>
                             <a href="/trainers" class="nav-item nav-link">Personal</a>
-                            <a href="/events" class="nav-item nav-link">Eventos</a>
+                            <a href="/eventos" class="nav-item nav-link">Eventos</a>
                             <a href="/contact" class="nav-item nav-link">Contacto</a>
                         @endif
                     </div>

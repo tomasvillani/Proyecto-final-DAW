@@ -32,32 +32,37 @@
 
         @yield('content')
 
-        <!-- Footer Start -->
-        @include('layouts.footer')
-        <!-- Footer End -->
+        @if(Auth::guest() || (Auth::check() && Auth::user()->tipo_usuario == 'cliente'))
+            <!-- Footer Start -->
+            @include('layouts.footer')
+            <!-- Footer End -->
+        @endif
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-dark py-3 fs-4 back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-        <!-- Botón flotante del chatbot -->
-        <div id="chatbot-icon">
-            <i class="fa-solid fa-robot" style="color: #ffffff;"></i>
-        </div>
+        @if(Auth::guest() || (Auth::check() && Auth::user()->tipo_usuario == 'cliente'))
+            <!-- Botón flotante del chatbot -->
+            <div id="chatbot-icon">
+                <i class="fa-solid fa-robot" style="color: #ffffff;"></i>
+            </div>
 
-        <!-- Ventana del chatbot -->
-        <div id="chatbot-container">
-            <div id="chatbot-header">
-                <span>Chatbot Gym</span>
-                <i class="fa-solid fa-rectangle-xmark fa-xl"></i>
+            <!-- Ventana del chatbot -->
+            <div id="chatbot-container">
+                <div id="chatbot-header">
+                    <span>Chatbot Gym</span>
+                    <i class="fa-solid fa-rectangle-xmark fa-xl"></i>
+                </div>
+                <div id="chatbot-messages"></div>
+                <div id="chatbot-input-container">
+                    <input type="text" id="chatbot-input" placeholder="Escribe un mensaje...">
+                    <button id="send-button">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
             </div>
-            <div id="chatbot-messages"></div>
-            <div id="chatbot-input-container">
-                <input type="text" id="chatbot-input" placeholder="Escribe un mensaje...">
-                <button id="send-button">
-                    <i class="fa-solid fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
+        @endif
+
 
     </body>
 

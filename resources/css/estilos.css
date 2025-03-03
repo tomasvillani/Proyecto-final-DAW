@@ -337,3 +337,11 @@ box-shadow: none;
     box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.5); /* Acento rojo alrededor cuando se hace foco */
     transform: scale(1.05); /* Efecto de aumento al hacer foco */
 }
+
+.evento-img {
+    width: 100%; /* Que la imagen ocupe todo el ancho del contenedor */
+    height: 300px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Para que la imagen se ajuste sin perder proporciones */
+    object-position: center; /* Centra la imagen */
+    border-radius: 10px; /* Bordes redondeados opcional */
+}

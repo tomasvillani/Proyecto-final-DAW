@@ -51,39 +51,41 @@
                 </div>
             </div>
         </div>
-        <div class="row g-0">
-            <div class="col-lg-6">
-                <div class="bg-dark p-5">
-                    <form id="contact-form" action="{{ route('enviar_correo') }}" method="POST">
-                        @csrf <!-- Token CSRF para seguridad -->
-                        
-                        <div class="row g-3">
-                            <div class="col-6">
-                                <input type="text" name="name" class="form-control bg-light border-0 px-4" placeholder="Tu nombre" required style="height: 55px;">
+        @if(Auth::guest() || (Auth::check() && Auth::user()->tipo_usuario == 'cliente'))
+            <div class="row g-0">
+                <div class="col-lg-6">
+                    <div class="bg-dark p-5">
+                        <form id="contact-form" action="{{ route('enviar_correo') }}" method="POST">
+                            @csrf <!-- Token CSRF para seguridad -->
+                            
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <input type="text" name="name" class="form-control bg-light border-0 px-4" placeholder="Tu nombre" required style="height: 55px;">
+                                </div>
+                                <div class="col-6">
+                                    <input type="email" name="email" class="form-control bg-light border-0 px-4" placeholder="Tu correo electrónico" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" name="subject" class="form-control bg-light border-0 px-4" placeholder="Asunto" required style="height: 55px;">
+                                </div>
+                                <div class="col-12">
+                                    <textarea name="message" class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Mensaje" required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Enviar</button>
+                                </div>
                             </div>
-                            <div class="col-6">
-                                <input type="email" name="email" class="form-control bg-light border-0 px-4" placeholder="Tu correo electrónico" required style="height: 55px;">
-                            </div>
-                            <div class="col-12">
-                                <input type="text" name="subject" class="form-control bg-light border-0 px-4" placeholder="Asunto" required style="height: 55px;">
-                            </div>
-                            <div class="col-12">
-                                <textarea name="message" class="form-control bg-light border-0 px-4 py-3" rows="4" placeholder="Mensaje" required></textarea>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Enviar</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <iframe class="w-100"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3487.526457866717!2d-13.679721700000002!3d29.0605843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc46225fd32b5821%3A0x15a555d3aad5f880!2sGimnasio%20Municipal%20de%20Tinajo!5e0!3m2!1ses!2ses!4v1740393812229!5m2!1ses!2ses"
+                        frameborder="0" style="height: 457px; border:0;" allowfullscreen="" aria-hidden="false"
+                        tabindex="0"></iframe>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <iframe class="w-100"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3487.526457866717!2d-13.679721700000002!3d29.0605843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc46225fd32b5821%3A0x15a555d3aad5f880!2sGimnasio%20Municipal%20de%20Tinajo!5e0!3m2!1ses!2ses!4v1740393812229!5m2!1ses!2ses"
-                    frameborder="0" style="height: 457px; border:0;" allowfullscreen="" aria-hidden="false"
-                    tabindex="0"></iframe>
-            </div>
-        </div>
+        @endif
     </div>
     <!-- Contact End -->
 @endsection

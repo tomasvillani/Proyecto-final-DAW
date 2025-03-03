@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evento;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class EventoController extends Controller
@@ -25,9 +26,9 @@ class EventoController extends Controller
     // Mostrar todos los eventos
     public function index()
     {
-        $eventos = Evento::latest()->paginate(6);
+        $eventos = Evento::orderBy('fecha', 'desc')->orderBy('hora', 'desc')->paginate(6);
         return view('eventos.index', compact('eventos'));
-    }    
+    }
 
     // Mostrar formulario para crear un nuevo evento
     public function create()
@@ -83,11 +84,16 @@ class EventoController extends Controller
             'imagen' => ['nullable', 'image', 'mimes:jpg,png,jpeg'],
         ], $this->validationMessages());
 
-        // Subir nueva imagen si se proporciona
-        if ($request->hasFile('imagen')) {
-            $imagenPath = $request->file('imagen')->store('eventos', 'public');
+        // Verificar si se marca el checkbox para eliminar la imagen
+        if ($request->has('eliminar_imagen') && $request->eliminar_imagen == 'on') {
+            // Eliminar la imagen actual
+            if ($evento->imagen) {
+                Storage::disk('public')->delete($evento->imagen);
+            }
+            $imagenPath = null; // No hay nueva imagen
         } else {
-            $imagenPath = $evento->imagen;
+            // Subir nueva imagen si existe
+            $imagenPath = $request->hasFile('imagen') ? $request->file('imagen')->store('eventos', 'public') : $evento->imagen;
         }
 
         // Actualizar evento
@@ -111,10 +117,4 @@ class EventoController extends Controller
         return redirect()->route('eventos.index')->with('success', 'Evento eliminado con éxito.');
     }
 
-    // Mostrar detalles de un evento
-    public function show($id)
-    {
-        $evento = Evento::findOrFail($id);
-        return view('eventos.show', compact('evento'));
-    }
 }

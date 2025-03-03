@@ -42,7 +42,7 @@
             <!-- Hora -->
             <div class="mb-3">
                 <label for="hora" class="form-label">Hora</label>
-                <input type="time" class="form-control @error('hora') is-invalid @enderror" id="hora" name="hora" value="{{ old('hora') }}" required>
+                <input type="time" class="form-control @error('hora') is-invalid @enderror" id="hora" name="hora" value="{{ old('hora')}}" required>
                 @error('hora')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

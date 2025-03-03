@@ -1,4 +1,4 @@
-@extends('layouts.layout') 
+@extends('errors.layout') 
 
 @section('title', 'Sesión Expirada')
 
