@@ -267,6 +267,14 @@ class ReservaController extends Controller
         return redirect()->route('admin-reservas.index')->with('success', 'Reserva creada correctamente.');
     }
 
+    public function admin_destroy($id)
+    {
+        $reserva = Reserva::findOrFail($id);
+        
+        $reserva->delete();
+        return redirect()->route('admin-reservas.index', $reserva->user_id)->with('success', 'Reserva eliminada con éxito.');
+    }
+
     public function buscarUsuarioPorDNI(Request $request)
     {
         $dni = $request->input('dni');

@@ -61,7 +61,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/reservas', [ReservaController::class, 'admin_index'])->name('admin-reservas.index'); // Ver todas las reservas
     Route::get('/reservas/create', [ReservaController::class, 'admin_create'])->name('admin-reservas.create'); // Crear una nueva reserva
     Route::post('/reservas', [ReservaController::class, 'admin_store'])->name('admin-reservas.store'); // Almacenar reserva
-    Route::delete('/reservas/{id}', [ReservaController::class, 'destroy'])->name('admin-reservas.destroy'); // Eliminar reserva
+    Route::delete('/reservas/{id}', [ReservaController::class, 'admin_destroy'])->name('admin-reservas.destroy'); // Eliminar reserva
     Route::get('/buscar-usuario-dni', [ReservaController::class, 'buscarUsuarioPorDNI'])->name('reservas.buscarUsuarioPorDNI');
 });
 
