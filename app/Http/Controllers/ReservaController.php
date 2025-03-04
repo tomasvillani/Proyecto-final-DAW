@@ -264,18 +264,27 @@ class ReservaController extends Controller
             'hora' => $request->hora,
         ]);
 
-        return redirect()->route('reservas.admin.index')->with('success', 'Reserva creada correctamente.');
+        return redirect()->route('admin-reservas.index')->with('success', 'Reserva creada correctamente.');
     }
 
     public function buscarUsuarioPorDNI(Request $request)
     {
         $dni = $request->input('dni');
         
-        $usuario = User::where('dni', $dni)->with('clases')->first();  // Asumiendo que el modelo User tiene relación con 'clases'
+        // Buscar al usuario por DNI
+        $usuario = User::where('dni', $dni)->first();
 
+        // Verificar si el usuario fue encontrado y si tiene el atributo 'clases'
         if ($usuario) {
-            return response()->json(['usuario' => $usuario]);
+            // Si el atributo 'clases' existe y tiene datos
+            if ($usuario->clases) {
+                return response()->json(['usuario' => $usuario]);
+            } else {
+                // Si el atributo 'clases' está vacío o no existe
+                return response()->json(['error' => 'El usuario no tiene clases asignadas'], 404);
+            }
         } else {
+            // Si no se encuentra el usuario por el DNI
             return response()->json(['error' => 'Usuario no encontrado'], 404);
         }
     }
