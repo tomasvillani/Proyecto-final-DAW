@@ -32,7 +32,7 @@
                             <a href="/trainers" class="nav-item nav-link">Personal</a>
                             <a href="/eventos" class="nav-item nav-link">Eventos</a>
                             <a href="/contact" class="nav-item nav-link">Contacto</a>
-                            <a href="/mis-reservas" class="nav-item nav-link">Mis Reservas</a>
+                            <a href="{{ route('mis-reservas.index', ['userId' => Auth::user()->id]) }}" class="nav-item nav-link">Mis Reservas</a>
 
                         @else
                             <!-- SOLO PARA INVITADOS (NO LOGUEADOS) -->

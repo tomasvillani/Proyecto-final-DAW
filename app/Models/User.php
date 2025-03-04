@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Models\Tarifa;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Notifications\CustomResetPassword;
+use App\Models\Tarifa;
 
 class User extends Authenticatable
 {
@@ -18,44 +18,45 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'dni',         // Asegúrate de agregar 'dni' en el fillable
+        'dni',         
         'name',
-        'surname',     // Asegúrate de agregar 'surname'
+        'surname',     
         'email',
         'tipo_usuario',
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
+    protected $casts = [
+        'clases' => 'array',  // Esto asegura que 'clases' se trate como un array.
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * Get the tarifa associated with the user.
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
-
     public function tarifa()
     {
         return $this->belongsTo(Tarifa::class);
     }
 
+    /**
+     * Verifica si el usuario puede acceder a la clase dada.
+     *
+     * @param  string  $clase
+     * @return bool
+     */
+    public function puedeReservar($clase)
+    {
+        $clasesPermitidas = json_decode($this->tarifa->clases, true);
+        return in_array($clase, $clasesPermitidas);
+    }
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new CustomResetPassword($token));
+    }
+
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class);
     }
 }

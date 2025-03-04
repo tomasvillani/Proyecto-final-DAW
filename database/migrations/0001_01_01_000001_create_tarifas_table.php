@@ -17,7 +17,6 @@ return new class extends Migration
             $table->integer('duracion'); // Duración en días
             $table->text('descripcion')->nullable(); // Descripción de la tarifa
             $table->decimal('precio', 8, 2); // Precio con dos decimales
-            $table->json('clases'); // Almacena un array de clases en formato JSON
             $table->timestamps();
         });
         

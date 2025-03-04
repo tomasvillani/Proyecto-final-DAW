@@ -21,10 +21,16 @@ return new class extends Migration
             $table->string('tipo_usuario');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->json('clases')->nullable();
             $table->foreignId('tarifa_id')
-              ->nullable()
-              ->constrained('tarifas')  // Relaciona con la tabla 'tarifas'
-              ->onDelete('set null');
+                  ->nullable()
+                  ->constrained('tarifas')  // Relaciona con la tabla 'tarifas'
+                  ->onDelete('set null');
+            
+            // Añadir los campos de fecha de inicio y expiración
+            $table->timestamp('fecha_inicio')->nullable();  // Fecha de inicio de la tarifa
+            $table->timestamp('fecha_expiracion')->nullable();  // Fecha de expiración de la tarifa
+            
             $table->rememberToken();
             $table->timestamps();
         });

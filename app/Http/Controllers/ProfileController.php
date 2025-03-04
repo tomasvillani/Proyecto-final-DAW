@@ -2,77 +2,178 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tarifa;  // Asegúrate de importar el modelo Tarifa
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Horario;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the user's profile form.
-     */
+    // Mostrar formulario de perfil
     public function edit(Request $request): View
     {
+        $user = $request->user();
+        $tarifaVencida = false;
+
+        // Verificamos si la tarifa ha vencido
+        if ($user->tarifa_id && $user->fecha_expiracion < now()) {
+            // Si la tarifa ha vencido, eliminamos la relación de tarifa
+            $user->tarifa_id = null;
+            $user->fecha_inicio = null;
+            $user->fecha_expiracion = null;
+            $user->clases = []; // Limpiamos las clases asociadas
+            $user->save();
+
+            // Marcamos la tarifa como vencida
+            $tarifaVencida = true;
+        }
+
         return view('profile.edit', [
-            'user' => $request->user(),
+            'user' => $user,
+            'tarifaVencida' => $tarifaVencida,
         ]);
     }
 
-    /**
-     * Update the user's profile information.
-     */
+    // Actualizar información del perfil
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        // Validar el email con un patrón personalizado
         $validator = Validator::make($request->all(), [
-            'email' => ['required', 'email', 'regex:/^[\w\.-]+@[\w\.-]+\.[a-zA-Z]+$/'],  // Validación con expresión regular
+            'email' => ['required', 'email', 'regex:/^[\w\.-]+@[\w\.-]+\.[a-zA-Z]+$/'], 
         ], [
             'email.regex' => 'El correo electrónico debe tener el formato correcto (ejemplo@dominio.com).',
         ]);
 
-        // Si la validación falla, redirigir con errores
         if ($validator->fails()) {
             return redirect()->route('profile.edit')
                              ->withErrors($validator)
                              ->withInput();
         }
 
-        // Rellenar la información del usuario
         $request->user()->fill($request->validated());
 
-        // Si el email ha cambiado, se debe restablecer la verificación
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
 
-        // Guardar el usuario
         $request->user()->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
-    /**
-     * Delete the user's account.
-     */
+    // Cambiar tarifa
+    public function cambiarTarifa(Request $request)
+    {
+        $user = Auth::user();
+
+        // Verificamos que el usuario sea un cliente
+        if ($user->tipo_usuario !== 'cliente') {
+            abort(403, 'No tienes permisos para realizar esta acción.');
+        }
+
+        // Verificamos si la tarifa actual ha vencido
+        if ($user->tarifa_id && $user->fecha_expiracion >= now()) {
+            return redirect()->route('profile.edit')->with('error', 'No puedes cambiar la tarifa hasta que la actual haya vencido.');
+        }
+
+        $tarifa = Tarifa::findOrFail($request->tarifa_id);
+
+        // Si la tarifa anterior ha vencido, eliminamos la relación de tarifa
+        if ($user->tarifa_id && $user->fecha_expiracion < now()) {
+            $user->tarifa_id = null;
+            $user->fecha_inicio = null;
+            $user->fecha_expiracion = null;
+            $user->clases = []; // Limpiamos las clases asociadas
+        }
+
+        // Establecemos la nueva tarifa
+        $fechaExpiracion = now()->addDays($tarifa->duracion); // Fecha de expiración calculada
+        $user->tarifa_id = $tarifa->id;
+        $user->fecha_inicio = now();
+        $user->fecha_expiracion = $fechaExpiracion;
+
+        // Guardamos la tarifa antes de redirigir
+        $user->save();
+
+        // Si la tarifa es personalizada, redirigimos al usuario para que elija clases
+        if ($tarifa->nombre == "Tarifa Personalizada") {
+            return redirect()->route('perfil.elegir-clases');
+        }
+
+        // Si no es tarifa personalizada, asignamos las clases correspondientes
+        $clasesDisponibles = Horario::all()->pluck('clase')->unique()->toArray();
+        $user->clases = $clasesDisponibles;
+        $user->save();
+
+        // Redirigimos a la página de perfil con un mensaje de éxito
+        return redirect()->back()->with('success', 'Tarifa cambiada correctamente');
+    }
+
+    // Mostrar clases disponibles
+    public function mostrarClases()
+    {
+        $user = Auth::user();
+
+        if ($user->tipo_usuario !== 'cliente') {
+            abort(403, 'No tienes permisos para realizar esta acción.');
+        }
+
+        return view('profile.elegir-clases');
+    }
+
+    // Guardar clases seleccionadas
+    public function guardarClases(Request $request)
+    {
+        $user = Auth::user();
+
+        // Verificamos que el usuario sea un cliente
+        if ($user->tipo_usuario !== 'cliente') {
+            abort(403, 'No tienes permisos para realizar esta acción.');
+        }
+
+        // Validamos las clases seleccionadas
+        $clasesSeleccionadas = $request->clases ?? [];
+        $totalClases = Horario::all()->unique('clase')->count();
+        $minimoClases = 1;
+        $maximoClases = $totalClases - 1;
+
+        // Verificamos que se haya seleccionado al menos 1 clase
+        if (empty($clasesSeleccionadas) || count($clasesSeleccionadas) < $minimoClases) {
+            return redirect()->route('perfil.elegir-clases')
+                            ->withErrors(['clases' => 'Debes seleccionar al menos 1 clase.']);
+        }
+
+        // Verificamos que no se hayan seleccionado más clases de las permitidas
+        if (count($clasesSeleccionadas) > $maximoClases) {
+            return redirect()->route('perfil.elegir-clases')
+                            ->withErrors(['clases' => 'No puedes seleccionar más de ' . $maximoClases . ' clases.']);
+        }
+
+        // Guardamos las clases seleccionadas directamente en el usuario
+        $user->clases = $clasesSeleccionadas;
+        $user->save();
+
+        // Redirigimos a la página de perfil con un mensaje de éxito
+        return redirect()->route('profile.edit')->with('success', 'Clases guardadas correctamente');
+    }
+
+    // Eliminar cuenta
     public function destroy(Request $request): RedirectResponse
     {
-        // Validar la contraseña antes de eliminar la cuenta
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);
 
-        // Obtener el usuario y proceder con el cierre de sesión y eliminación
         $user = $request->user();
 
         Auth::logout();
 
         $user->delete();
 
-        // Invalidar la sesión
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
