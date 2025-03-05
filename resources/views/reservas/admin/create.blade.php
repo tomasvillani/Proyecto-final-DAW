@@ -12,6 +12,10 @@
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
+    @elseif(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
     @endif
 
     <form action="{{ route('admin-reservas.store') }}" method="POST">
@@ -20,7 +24,7 @@
         <!-- Campo para el DNI del usuario -->
         <div class="mb-3">
             <label for="dni" class="form-label">DNI del Usuario</label>
-            <input type="text" name="dni" id="dni" class="form-control" required value="{{ old('dni') }}">
+            <input type="text" name="dni" id="dni" class="form-control" required>
             @error('dni')
                 <div class="alert alert-danger mt-2">{{ $message }}</div>
             @enderror

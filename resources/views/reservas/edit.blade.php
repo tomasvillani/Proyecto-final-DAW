@@ -12,6 +12,10 @@
         <div class="alert alert-success">
             {{ session('success') }}
         </div>
+    @elseif(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
     @endif
 
     <form action="{{ route('mis-reservas.update', ['userId' => $usuario->id, 'reservaId' => $reserva->id]) }}" method="POST">

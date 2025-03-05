@@ -64,19 +64,37 @@ class ReservaController extends Controller
     public function store(Request $request)
     {
         $this->authorizeCliente($request->user_id); // Validación de usuario y tipo
-        
+
+        // Validar los datos de la solicitud
         $request->validate([
             'clase' => 'required|string',
             'dia' => 'required|date|after_or_equal:' . now()->toDateString(),
-            'hora' => 'required|string',  // Esta es la hora de inicio que el usuario selecciona
+            'hora' => 'required|string',
+        ], [
+            'clase.required' => 'La clase es obligatoria.',
+            'clase.string' => 'La clase debe ser un texto válido.',
+            
+            'dia.required' => 'El día es obligatorio.',
+            'dia.date' => 'El día debe ser una fecha válida.',
+            'dia.after_or_equal' => 'El día debe ser hoy o una fecha posterior.',
+        
+            'hora.required' => 'La hora es obligatoria.',
+            'hora.string' => 'La hora debe ser un texto válido.',
         ]);
+        
 
-        // Guardar reserva en la base de datos
+        // Validar si la hora elegida ya pasó en el día de la reserva
+        $horaReserva = Carbon::parse($request->dia . ' ' . $request->hora);
+        if ($horaReserva->isBefore(Carbon::now())) {
+            return redirect()->back()->with('error', 'La fecha y hora seleccionada ya ha pasado.')->withInput();
+        }
+
+        // Guardar reserva
         Reserva::create([
             'user_id' => $request->user_id,
             'clase' => $request->clase,
             'dia' => $request->dia,
-            'hora' => $request->hora, // Se está guardando la hora de inicio
+            'hora' => $request->hora,
         ]);
 
         return redirect()->route('mis-reservas.index', $request->user_id)->with('success', 'Reserva realizada correctamente.');
@@ -298,29 +316,49 @@ class ReservaController extends Controller
     // Actualizar una reserva
     public function update(Request $request, $userId, $reservaId)
     {
-        // Validación de entrada
+        // Autorización: Verifica que el usuario que está haciendo la petición sea el propietario de la reserva.
         $this->authorizeCliente($userId);
 
+        // Validación de los datos del formulario.
         $request->validate([
             'clase' => 'required|string',
-            'dia' => 'required|date|after_or_equal:' . now()->toDateString(),
+            'dia' => 'required|date|after_or_equal:' . now()->toDateString(),  // La fecha debe ser actual o futura
             'hora' => 'required|string',
+        ], [
+            'clase.required' => 'La clase es obligatoria.',
+            'clase.string' => 'La clase debe ser un texto válido.',
+            
+            'dia.required' => 'El día es obligatorio.',
+            'dia.date' => 'El día debe ser una fecha válida.',
+            'dia.after_or_equal' => 'El día debe ser hoy o una fecha posterior.',
+        
+            'hora.required' => 'La hora es obligatoria.',
+            'hora.string' => 'La hora debe ser un texto válido.',
         ]);
+        
 
+        // Comprobar que la fecha y hora no son del pasado
+        $fechaHoraReserva = $request->dia . ' ' . $request->hora;
+        if (strtotime($fechaHoraReserva) < time()) {
+            return redirect()->back()->with('error', 'La fecha y hora seleccionada ya ha pasado.')->withInput();
+        }
+
+        // Buscar la reserva a actualizar.
         $reserva = Reserva::findOrFail($reservaId);
 
-        // Verificar que la reserva pertenece al cliente
+        // Verificar si la reserva pertenece al cliente (usuario).
         if ($reserva->user_id != $userId) {
             abort(403, 'No tienes permisos para editar esta reserva.');
         }
 
-        // Actualizar la reserva con los nuevos datos
+        // Actualizar la reserva con los nuevos datos proporcionados en el formulario.
         $reserva->update([
             'clase' => $request->clase,
             'dia' => $request->dia,
             'hora' => $request->hora,
         ]);
 
+        // Redirigir al cliente a su lista de reservas con un mensaje de éxito.
         return redirect()->route('mis-reservas.index', $userId)->with('success', 'Reserva actualizada correctamente.');
     }
 
@@ -345,26 +383,37 @@ class ReservaController extends Controller
     {
         // Validación de la solicitud
         $request->validate([
-            'dni' => 'required|string|size:9',  // Validar DNI
-            'clase' => 'required|string',
-            'dia' => 'required|date|after_or_equal:' . now()->toDateString(),
-            'hora' => 'required|string',
+            'dni' => 'required|string|size:9',  // El DNI debe tener exactamente 9 caracteres
+            'clase' => 'required|string',  // La clase es obligatoria y debe ser un texto
+            'dia' => 'required|date|after_or_equal:' . now()->toDateString(),  // El día debe ser hoy o una fecha posterior
+            'hora' => 'required|string',  // La hora es obligatoria y debe ser un texto
         ], [
             'dni.required' => 'El DNI es obligatorio.',
-            'dni.size' => 'El DNI debe tener 9 caracteres.',
+            'dni.string' => 'El DNI debe ser un texto válido.',
+            'dni.size' => 'El DNI debe tener exactamente 9 caracteres.',
+        
             'clase.required' => 'La clase es obligatoria.',
+            'clase.string' => 'La clase debe ser un texto válido.',
+            
             'dia.required' => 'El día es obligatorio.',
-            'dia.date' => 'El formato del día es incorrecto.',
-            'dia.after_or_equal' => 'La fecha del día debe ser igual o posterior a la fecha actual.',
+            'dia.date' => 'El día debe ser una fecha válida.',
+            'dia.after_or_equal' => 'El día debe ser hoy o una fecha posterior.',
+        
             'hora.required' => 'La hora es obligatoria.',
-        ]);
+            'hora.string' => 'La hora debe ser un texto válido.',
+        ]);        
 
         // Buscar al usuario por DNI y asegurarse de que su tipo sea "cliente"
         $usuario = User::where('dni', $request->dni)->where('tipo_usuario', 'cliente')->first();
 
         if (!$usuario) {
-            // Si el usuario no existe o no es de tipo cliente, redirige con un mensaje de error
             return redirect()->route('admin-reservas.create')->withErrors(['dni' => 'El usuario no existe o no es un cliente.']);
+        }
+
+        // Validar si la hora elegida ya pasó en el día de la reserva
+        $horaReserva = Carbon::parse($request->dia . ' ' . $request->hora);
+        if ($horaReserva->isBefore(Carbon::now())) {
+            return redirect()->back()->with('error', 'La fecha y hora seleccionada ya ha pasado.')->withInput();
         }
 
         // Crear la reserva para el usuario encontrado
@@ -462,11 +511,11 @@ class ReservaController extends Controller
 
     public function admin_update(Request $request, $id)
     {
-        // Validar la entrada del formulario con mensajes personalizados
+        // Validación de los datos del formulario con mensajes personalizados para los campos.
         $request->validate([
             'dni' => 'required|string|size:9',  // Validar que el DNI sea correcto
             'clase' => 'required|string',
-            'dia' => 'required|date|after_or_equal:' . now()->toDateString(),
+            'dia' => 'required|date|after_or_equal:' . now()->toDateString(),  // La fecha debe ser actual o futura
             'hora' => 'required|string',
         ], [
             'dni.required' => 'El DNI es obligatorio.',
@@ -481,10 +530,16 @@ class ReservaController extends Controller
             'hora.string' => 'La hora debe ser una cadena de texto.',
         ]);
 
+        // Comprobar que la fecha y hora no son del pasado
+        $fechaHoraReserva = $request->dia . ' ' . $request->hora;
+        if (strtotime($fechaHoraReserva) < time()) {
+            return redirect()->back()->with('error', 'La fecha y hora seleccionada ya ha pasado.')->withInput();
+        }
+
         // Buscar al usuario por DNI
         $usuario = User::where('dni', $request->dni)->first();
 
-        // Verificar si el usuario existe y si es del tipo 'cliente'
+        // Verificar si el usuario existe y si es de tipo 'cliente'
         if (!$usuario) {
             return redirect()->back()->with('error_dni', 'Usuario no encontrado.')->withInput();
         }
@@ -493,10 +548,10 @@ class ReservaController extends Controller
             return redirect()->back()->with('error_dni', 'El usuario debe ser de tipo cliente.')->withInput();
         }
 
-        // Ahora que el usuario ha sido validado, obtenemos las clases que tiene asociadas
+        // Obtener las clases asociadas a ese usuario
         $clasesUsuario = $usuario->clases; // Asumiendo que 'clases' es una relación en el modelo User
 
-        // Verificar si la clase seleccionada por el usuario es válida para ese usuario
+        // Verificar si la clase seleccionada está disponible para ese usuario
         if (!in_array($request->clase, $clasesUsuario)) {
             return redirect()->back()->with('error_dni', 'La clase seleccionada no está disponible para este usuario.')->withInput();
         }
@@ -504,12 +559,13 @@ class ReservaController extends Controller
         // Actualizar la reserva con los nuevos datos
         $reserva = Reserva::findOrFail($id);
         $reserva->update([
-            'user_id' => $usuario->id,  // Actualizamos con el ID del usuario encontrado
+            'user_id' => $usuario->id,  // Se actualiza con el ID del usuario encontrado
             'clase' => $request->clase,
             'dia' => $request->dia,
             'hora' => $request->hora,
         ]);
 
+        // Redirigir al administrador a la lista de reservas con un mensaje de éxito.
         return redirect()->route('admin-reservas.index')->with('success', 'Reserva actualizada correctamente.');
     }
 
