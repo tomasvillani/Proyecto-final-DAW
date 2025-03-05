@@ -17,6 +17,7 @@ return new class extends Migration
             $table->time('hora_fin'); // Nueva columna para la hora de finalización
             $table->string('dia', 20);
             $table->string('clase', 50);
+            $table->boolean('disponible')->default(true); // Nuevo campo disponible (booleano)
             $table->timestamps(); // created_at y updated_at
         });
     }

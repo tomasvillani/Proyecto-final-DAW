@@ -6,6 +6,7 @@
     <title>@yield('title')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->

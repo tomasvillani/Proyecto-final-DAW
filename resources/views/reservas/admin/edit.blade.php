@@ -1,11 +1,11 @@
 @extends('layouts.layout')
 
-@section('title', 'Crear Reserva para Usuario')
+@section('title', 'Editar Reserva para Usuario')
 
 @section('content')
 <div class="container-fluid p-5">
     <div class="mb-5 text-center">
-        <h1 class="display-3 text-uppercase mb-0">Crear Reserva para Usuario</h1>
+        <h1 class="display-3 text-uppercase mb-0">Editar Reserva para Usuario</h1>
     </div>
 
     @if (session('success'))
@@ -14,13 +14,14 @@
         </div>
     @endif
 
-    <form action="{{ route('admin-reservas.store') }}" method="POST">
+    <form action="{{ route('admin-reservas.update', $reserva->id) }}" method="POST">
         @csrf
+        @method('PUT')
 
         <!-- Campo para el DNI del usuario -->
         <div class="mb-3">
             <label for="dni" class="form-label">DNI del Usuario</label>
-            <input type="text" name="dni" id="dni" class="form-control" required value="{{ old('dni') }}">
+            <input type="text" name="dni" id="dni" class="form-control" required value="{{ old('dni', $reserva->user->dni) }}">
             @error('dni')
                 <div class="alert alert-danger mt-2">{{ $message }}</div>
             @enderror
@@ -29,8 +30,11 @@
         <!-- Selección de Clase -->
         <div class="mb-3">
             <label for="clase" class="form-label">Clase</label>
-            <select name="clase" id="clase" class="form-control" required disabled>
+            <select name="clase" id="clase" class="form-control" required>
                 <option value="">Selecciona una clase</option>
+                @foreach ($clasesUsuario as $clase)
+                    <option value="{{ $clase }}" {{ $reserva->clase == $clase ? 'selected' : '' }}>{{ $clase }}</option>
+                @endforeach
             </select>
             @error('clase')
                 <div class="alert alert-danger mt-2">{{ $message }}</div>
@@ -40,8 +44,8 @@
         <!-- Días disponibles -->
         <div class="mb-3">
             <label for="dia" class="form-label">Día</label>
-            <select name="dia" id="dia" class="form-control" required disabled>
-                <option value="">Selecciona un día</option>
+            <select name="dia" id="dia" class="form-control" required>
+                <option value="{{ $reserva->dia }}">{{ date('d/m/Y', strtotime($reserva->dia)) }}</option>
             </select>
             @error('dia')
                 <div class="alert alert-danger mt-2">{{ $message }}</div>
@@ -51,15 +55,16 @@
         <!-- Horas disponibles -->
         <div class="mb-3">
             <label for="hora" class="form-label">Hora</label>
-            <select name="hora" id="hora" class="form-control" required disabled>
-                <option value="">Selecciona una hora</option>
+            <select name="hora" id="hora" class="form-control" required>
+                <option value="{{ $reserva->hora }}">{{ $reserva->hora }}</option>
             </select>
             @error('hora')
                 <div class="alert alert-danger mt-2">{{ $message }}</div>
             @enderror
         </div>
 
-        <button type="submit" class="btn btn-primary">Crear Reserva</button>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="{{ route('admin-reservas.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 
@@ -82,6 +87,8 @@
                 success: function (data) {
                     if (data.usuario) {
                         $('#clase').prop('disabled', false);
+                        // Limpiar clases previas y agregar las nuevas
+                        $('#clase').html('<option value="">Selecciona una clase</option>');
                         if(data.usuario.clases)
                         {
                             data.usuario.clases.forEach(function(clase) {

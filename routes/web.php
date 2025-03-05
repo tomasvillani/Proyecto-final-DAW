@@ -50,6 +50,7 @@ Route::middleware(['admin'])->group(function () {
     Route::put('/clientes/{cliente}', [ClienteController::class, 'update'])->name('clientes.update');
     Route::delete('/clientes/{cliente}', [ClienteController::class, 'destroy'])->name('clientes.destroy');
     Route::get('/clientes/{cliente}', [ClienteController::class, 'show'])->name('clientes.show');
+    Route::patch('/cambiar-disponibilidad/{id}', [HorarioController::class, 'cambiarDisponibilidad'])->name('cambiar_disponibilidad');
 
     // Rutas para eventos
     Route::get('/eventos/create', [EventoController::class, 'create'])->name('eventos.create');
@@ -63,6 +64,10 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/reservas', [ReservaController::class, 'admin_store'])->name('admin-reservas.store'); // Almacenar reserva
     Route::delete('/reservas/{id}', [ReservaController::class, 'admin_destroy'])->name('admin-reservas.destroy'); // Eliminar reserva
     Route::get('/buscar-usuario-dni', [ReservaController::class, 'buscarUsuarioPorDNI'])->name('reservas.buscarUsuarioPorDNI');
+    Route::get('/admin/reservas/{userId}/ver/{reservaId}', [ReservaController::class, 'admin_ver'])->name('admin-reservas.ver');
+    Route::get('/admin/reservas/{id}/edit', [ReservaController::class, 'admin_edit'])->name('admin-reservas.edit');
+    Route::put('/admin/reservas/{id}', [ReservaController::class, 'admin_update'])->name('admin-reservas.update');
+
 });
 
 Route::middleware('auth')->group(function () {
@@ -89,6 +94,9 @@ Route::middleware('auth')->group(function () {
 
     // Eliminar una reserva
     Route::delete('/mis-reservas/{reserva}', [ReservaController::class, 'destroy'])->name('mis-reservas.destroy');
+
+    Route::get('mis-reservas/{userId}/edit/{reservaId}', [ReservaController::class, 'edit'])->name('mis-reservas.editar');
+    Route::put('mis-reservas/{userId}/update/{reservaId}', [ReservaController::class, 'update'])->name('mis-reservas.update');
 
     Route::get('/sin-tarifa', function () {
         return view('reservas.sin-tarifa');  // Vista que muestra el mensaje de error

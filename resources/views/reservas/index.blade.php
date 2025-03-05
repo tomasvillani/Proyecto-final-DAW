@@ -33,6 +33,10 @@
                                 <i class="bi bi-eye"></i> Ver
                             </a>
 
+                            <a href="{{ route('mis-reservas.editar', ['userId' => $usuario->id, 'reservaId' => $reserva->id]) }}" class="btn btn-warning">
+                                <i class="bi bi-pencil-square"></i> Editar
+                            </a>
+
                             <!-- Eliminar reserva con confirmación -->
                             <form action="{{ route('mis-reservas.destroy', $reserva->id) }}" method="POST" style="display:inline;" id="delete-form-{{ $reserva->id }}">
                                 @csrf

@@ -21,6 +21,7 @@
                         @if (Auth::check() && Auth::user()->tipo_usuario == 'admin')
                             <!-- SOLO PARA ADMIN -->
                             <a href="/clientes" class="nav-item nav-link">Clientes</a>
+                            <a href="/classes" class="nav-item nav-link">Clases</a>
                             <a href="/reservas" class="nav-item nav-link">Reservas</a>
                             <a href="/eventos" class="nav-item nav-link">Eventos</a>
 
