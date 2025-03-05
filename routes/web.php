@@ -29,10 +29,6 @@ Route::get('/trainers', function () {
 
 Route::get('/eventos', [EventoController::class, 'index'])->name('eventos.index');
 
-Route::get('/details', function () {
-    return view('details');
-});
-
 Route::get('/contact', function () {
     return view('contact');
 });
