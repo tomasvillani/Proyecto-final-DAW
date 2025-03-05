@@ -54,7 +54,9 @@
                 @endforeach
             </tbody>
         </table>
-
+        <div class="col-12">
+            {{ $clientes->links('pagination::bootstrap-4') }}
+        </div>
         <!-- Botón para crear un nuevo cliente con ícono -->
         <div class="mb-4">
             <a href="{{ route('clientes.create') }}" class="btn btn-success">

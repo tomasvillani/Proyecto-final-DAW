@@ -40,7 +40,7 @@ class ReservaController extends Controller
             return redirect()->route('sin-tarifa');
         }
 
-        $reservas = $usuario->reservas;
+        $reservas = $usuario->reservas()->paginate(6);
         return view('reservas.index', compact('reservas', 'usuario'));
     }
 
@@ -329,7 +329,7 @@ class ReservaController extends Controller
         // Eliminar reservas vencidas antes de mostrar todas las reservas
         $this->eliminarReservasVencidas();
 
-        $reservas = Reserva::all();
+        $reservas = Reserva::paginate(6);
         return view('reservas.admin.index', compact('reservas'));
     }
 

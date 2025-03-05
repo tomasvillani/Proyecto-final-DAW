@@ -52,6 +52,11 @@
         </tbody>
     </table>
 
+    <!-- Agregar paginación -->
+    <div class="col-12">
+        {{ $reservas->links('pagination::bootstrap-4') }}
+    </div>
+
     <a href="{{ route('admin-reservas.create') }}" class="btn btn-success">
         <i class="bi bi-plus-circle"></i> Crear nueva reserva
     </a>

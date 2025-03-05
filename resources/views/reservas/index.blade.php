@@ -54,6 +54,11 @@
             </tbody>
         </table>
 
+        <!-- Agregar paginación -->
+        <div class="col-12">
+            {{ $reservas->links('pagination::bootstrap-4') }}
+        </div>
+
         <!-- Botón para crear una nueva reserva -->
         <div class="mb-4">
             <a href="{{ route('mis-reservas.create', $usuario->id) }}" class="btn btn-success">

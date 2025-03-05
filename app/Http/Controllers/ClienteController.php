@@ -31,7 +31,9 @@ class ClienteController extends Controller
     // Mostrar todos los clientes
     public function index()
     {
-        $clientes = User::where('tipo_usuario', 'cliente')->get(); // Solo clientes
+        // Paginamos los clientes. Por ejemplo, 10 clientes por página.
+        $clientes = User::where('tipo_usuario', 'cliente')->paginate(6); // Cambia el número 10 por el número de clientes que quieres por página
+
         return view('clientes.index', compact('clientes'));
     }
 
