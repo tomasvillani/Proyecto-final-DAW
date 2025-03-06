@@ -72,9 +72,16 @@
                             <button type="submit" class="btn btn-info">Cambiar Tarifa</button>
                         </form>
                     @else
-                        <div class="alert alert-info">
-                            No puedes cambiar tu tarifa hasta que la actual haya vencido.
-                        </div>
+                        @if(Auth::user()->clases)
+                            <div class="alert alert-info">
+                                No puedes cambiar tu tarifa hasta que la actual haya vencido.
+                            </div>
+                        @else
+                            <form action="/profile/elegir-clases" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-success">Seleccionar Clases</button>
+                            </form>
+                        @endif
                     @endif
                 @else
                     <div class="alert alert-warning text-center">

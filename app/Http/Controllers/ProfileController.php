@@ -118,8 +118,10 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->tipo_usuario !== 'cliente') {
+        if ($user->tipo_usuario !== 'cliente' || $user->tarifa_id == null) {
             abort(403, 'No tienes permisos para realizar esta acción.');
+        }else if($user->clases){
+            return view('error-clases');
         }
 
         return view('profile.elegir-clases');

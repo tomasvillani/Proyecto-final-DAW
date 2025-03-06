@@ -38,9 +38,19 @@ class ReservaController extends Controller
         $tarifa = $usuario->tarifa;
         if (!$tarifa) {
             return redirect()->route('sin-tarifa');
+        }else if($tarifa && !$usuario->clases){
+            return view('reservas.sin-clases');
         }
 
-        $reservas = $usuario->reservas()->paginate(6);
+        $reservas = $usuario->reservas()
+                    ->orderBy('dia', 'asc') // Ordena por fecha más próxima
+                    ->orderBy('hora', 'asc') // Ordena por hora más temprana
+                    ->paginate(6);
+
+        $reservas->getCollection()->transform(function ($reserva) {
+            $reserva->dia = \Carbon\Carbon::parse($reserva->dia)->format('m/d/Y'); // Formatea la fecha
+            return $reserva;
+        });
         return view('reservas.index', compact('reservas', 'usuario'));
     }
 
@@ -367,7 +377,15 @@ class ReservaController extends Controller
         // Eliminar reservas vencidas antes de mostrar todas las reservas
         $this->eliminarReservasVencidas();
 
-        $reservas = Reserva::paginate(6);
+        $reservas = Reserva::orderBy('dia', 'asc')
+                        ->orderBy('hora', 'asc') // Ordena también por hora
+                        ->paginate(6);
+
+        $reservas->getCollection()->transform(function ($reserva) {
+            $reserva->dia = \Carbon\Carbon::parse($reserva->dia)->format('d/m/Y'); // Formatea la fecha
+            return $reserva;
+        });
+
         return view('reservas.admin.index', compact('reservas'));
     }
 

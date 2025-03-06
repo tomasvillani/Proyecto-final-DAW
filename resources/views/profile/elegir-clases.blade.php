@@ -3,8 +3,8 @@
 @section('title', 'Seleccionar Clases')
 
 @section('content')
-<div class="container">
-    <h2>Selecciona tus clases</h2>
+<div class="container my-5">
+    <h2 class="display-3 text-uppercase mb-4">Selecciona tus clases</h2>
 
     <!-- Mostrar errores si los hay -->
     @if($errors->any())

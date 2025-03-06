@@ -49,7 +49,7 @@
         <div class="mb-3">
             <label for="dia" class="form-label">Día</label>
             <select name="dia" id="dia" class="form-control" required>
-                <option value="{{ $reserva->dia }}">{{ date('d/m/Y', strtotime($reserva->dia)) }}</option>
+                <option value="">Selecciona un día</option>
             </select>
             @error('dia')
                 <div class="alert alert-danger mt-2">{{ $message }}</div>
@@ -91,6 +91,8 @@
                 success: function (data) {
                     if (data.usuario) {
                         $('#clase').prop('disabled', false);
+                        $('#dia').prop('disabled', false);
+                        $('#hora').prop('disabled', false);
                         // Limpiar clases previas y agregar las nuevas
                         $('#clase').html('<option value="">Selecciona una clase</option>');
                         if(data.usuario.clases)
@@ -120,9 +122,9 @@
                     $('#dia').html('<option value="">Selecciona un día</option>');
                     data.dias.forEach(dia => {
                         let fechaFormateada = new Date(dia.fecha).toLocaleDateString('es-ES');  // Formato d/m/Y
-                        $('#dia').append(`<option value="${dia.fecha}">${dia.nombreDia} - ${fechaFormateada}</option>`);
+                        $('#dia').append(`<option value="${dia.fecha}" ${dia.fecha == '{{ $reserva->dia }}' ? 'selected' : ''}>${dia.nombreDia} - ${fechaFormateada}</option>`);
                     });
-                    $('#dia').prop('disabled', false);
+                    $('#dia').trigger('change');
                 }
             });
         }
@@ -131,11 +133,11 @@
     // Cuando seleccionas el día
     $('#dia').on('change', function () {
         let clase = $('#clase').val();
-        let fecha = $(this).val();  // Se pasa la fecha completa
+        let fecha = $(this).val();
         if (clase && fecha) {
             let fechaObj = new Date(fecha);
             let opciones = { weekday: 'long' };
-            let diaSemana = fechaObj.toLocaleDateString('es-ES', opciones);  // Nombre del día en español
+            let diaSemana = fechaObj.toLocaleDateString('es-ES', opciones);
 
             $.ajax({
                 url: "{{ route('reservas.getHorasDisponibles') }}",
@@ -143,22 +145,26 @@
                 data: { clase: clase, dia: diaSemana },
                 success: function (data) {
                     $('#hora').html('<option value="">Selecciona una hora</option>');
-
                     if (data.horas && data.horas.length > 0) {
                         data.horas.forEach(function(hora) {
                             let horas = hora.split(' - ');
                             let horaInicio = horas[0];
                             let horaFin = horas[1];
-
-                            $('#hora').append(`<option value="${horaInicio}">${horaInicio} - ${horaFin}</option>`);
+                            $('#hora').append(`<option value="${horaInicio}" ${horaInicio == '{{ $reserva->hora }}' ? 'selected' : ''}>${horaInicio} - ${horaFin}</option>`);
                         });
                     } else {
                         $('#hora').html('<option value="">No hay horas disponibles</option>');
                     }
-                    $('#hora').prop('disabled', false);
+                },
+                error: function(xhr, status, error) {
+                    alert('Error al obtener las horas disponibles. Intenta nuevamente.');
                 }
             });
         }
+    });
+
+    $(document).ready(function() {
+        $('#clase').trigger('change');
     });
 </script>
 
