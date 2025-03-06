@@ -118,7 +118,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->tipo_usuario !== 'cliente' || $user->tarifa_id) {
+        if ($user->tipo_usuario !== 'cliente') {
             abort(403, 'No tienes permisos para realizar esta acción.');
         }
 
