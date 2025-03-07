@@ -145,7 +145,6 @@ MAIL_FROM_NAME="Gym Tinajo"
 ```
 php artisan key:generate
 ```
-
 8. Ejecuta las migraciones y estos seeders, para rellenar los datos en la base de datos:
 ```
 php artisan migrate
@@ -157,7 +156,11 @@ Si quieres, también puedes ejecutar este seeder:
 ```
 php artisan db:seed --class=EventoSeeder
 ```
-8. Inicia el servicio:
+9. Para poder almacenar las imágenes para los eventos, ejecuta el siguiente comando:
+```
+php artisan storage:link
+```
+10. Inicia el servicio:
 ```
 php artisan serve
 ```
