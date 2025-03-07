@@ -59,3 +59,4 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 Consulta los siguientes documentos para obtener información detallada sobre el proceso de desarrollo:
 
 - [Documento de análisis](https://drive.google.com/file/d/1JYtGxBnd7t1Mh1d-TopQswQT5oJZd6gz/view?usp=sharing).
+- [Documento de diseño](https://drive.google.com/file/d/1vc1F60KjAmhHbwuSaGle54EMch1z8vvw/view?usp=sharing).
