@@ -47,10 +47,6 @@ Como **administrador,** tendrás acceso completo a todas las funcionalidades par
 
 Aunque los administradores no pueden interactuar con el chatbot, tienen el control total para garantizar el buen funcionamiento del gimnasio.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
 ## Documentos de interés
 
 Consulta los siguientes documentos para obtener información detallada sobre el proceso de desarrollo:
