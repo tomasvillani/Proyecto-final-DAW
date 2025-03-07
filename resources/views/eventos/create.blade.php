@@ -9,6 +9,12 @@
             <h1 class="display-3 text-uppercase mb-0">Nuevo Evento</h1>
         </div>
 
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <form action="{{ route('eventos.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             

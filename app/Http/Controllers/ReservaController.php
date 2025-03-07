@@ -99,7 +99,18 @@ class ReservaController extends Controller
             return redirect()->back()->with('error', 'La fecha y hora seleccionada ya ha pasado.')->withInput();
         }
 
-        // Guardar reserva
+        // Verificar si ya existe una reserva para el mismo día, hora y clase
+        $existeReserva = Reserva::where('user_id', $request->user_id)
+                                ->where('clase', $request->clase)
+                                ->whereDate('dia', $request->dia)
+                                ->where('hora', $request->hora)
+                                ->exists();
+
+        if ($existeReserva) {
+            return redirect()->back()->with('error', 'Ya tienes una reserva para esta clase, día y hora.')->withInput();
+        }
+
+        // Guardar la nueva reserva
         Reserva::create([
             'user_id' => $request->user_id,
             'clase' => $request->clase,
@@ -361,6 +372,18 @@ class ReservaController extends Controller
             abort(403, 'No tienes permisos para editar esta reserva.');
         }
 
+        // Verificar si ya existe una reserva para el mismo usuario, clase, día y hora.
+        $existeReserva = Reserva::where('user_id', $userId)
+                                ->where('clase', $request->clase)
+                                ->whereDate('dia', $request->dia)
+                                ->where('hora', $request->hora)
+                                ->where('id', '!=', $reservaId) // Aseguramos que no sea la misma reserva
+                                ->exists();
+
+        if ($existeReserva) {
+            return redirect()->back()->with('error', 'Ya tienes una reserva para esta clase, día y hora.')->withInput();
+        }
+
         // Actualizar la reserva con los nuevos datos proporcionados en el formulario.
         $reserva->update([
             'clase' => $request->clase,
@@ -426,6 +449,17 @@ class ReservaController extends Controller
 
         if (!$usuario) {
             return redirect()->route('admin-reservas.create')->withErrors(['dni' => 'El usuario no existe o no es un cliente.']);
+        }
+
+        // Verificar si ya existe una reserva para el mismo usuario, clase, día y hora
+        $existeReserva = Reserva::where('user_id', $usuario->id)
+                                ->where('clase', $request->clase)
+                                ->whereDate('dia', $request->dia)
+                                ->where('hora', $request->hora)
+                                ->exists();
+
+        if ($existeReserva) {
+            return redirect()->route('admin-reservas.create')->withErrors(['dni' => 'El usuario ya tiene una reserva para esta clase, día y hora.']);
         }
 
         // Validar si la hora elegida ya pasó en el día de la reserva
@@ -572,6 +606,18 @@ class ReservaController extends Controller
         // Verificar si la clase seleccionada está disponible para ese usuario
         if (!in_array($request->clase, $clasesUsuario)) {
             return redirect()->back()->with('error_dni', 'La clase seleccionada no está disponible para este usuario.')->withInput();
+        }
+
+        // Verificar si ya existe una reserva para este usuario, clase, día y hora
+        $existeReserva = Reserva::where('user_id', $usuario->id)
+                                ->where('clase', $request->clase)
+                                ->whereDate('dia', $request->dia)
+                                ->where('hora', $request->hora)
+                                ->where('id', '!=', $id)  // Aseguramos que no se compare con la misma reserva que estamos actualizando
+                                ->exists();
+
+        if ($existeReserva) {
+            return redirect()->route('admin-reservas.edit', $id)->withErrors(['dni' => 'El usuario ya tiene una reserva para esta clase, día y hora.']);
         }
 
         // Actualizar la reserva con los nuevos datos

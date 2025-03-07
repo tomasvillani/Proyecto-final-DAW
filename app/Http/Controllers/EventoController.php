@@ -48,6 +48,15 @@ class EventoController extends Controller
             'imagen' => ['nullable', 'image', 'mimes:jpg,png,jpeg'],
         ], $this->validationMessages());
 
+        // Verificar si ya existe un evento con el mismo título (sin importar mayúsculas/minúsculas), fecha y hora
+        $eventoExistente = Evento::whereRaw('LOWER(titulo) = ?', [strtolower($request->titulo)])
+                                ->whereDate('fecha', $request->fecha)
+                                ->exists();
+
+        if ($eventoExistente) {
+            return redirect()->back()->with('error', 'Ya existe un evento con el mismo título y fecha.')->withInput();
+        }
+
         // Subir imagen si existe
         $imagenPath = $request->file('imagen') ? $request->file('imagen')->store('eventos', 'public') : null;
 
@@ -83,6 +92,16 @@ class EventoController extends Controller
             'hora' => ['required', 'date_format:H:i'],
             'imagen' => ['nullable', 'image', 'mimes:jpg,png,jpeg'],
         ], $this->validationMessages());
+
+        // Verificar si ya existe un evento con el mismo título (sin importar mayúsculas/minúsculas), fecha y hora
+        $eventoExistente = Evento::whereRaw('LOWER(titulo) = ?', [strtolower($request->titulo)])
+                                ->whereDate('fecha', $request->fecha)
+                                ->where('id', '!=', $id)  // Asegurarse de que no se compara el evento que estamos actualizando
+                                ->exists();
+
+        if ($eventoExistente) {
+            return redirect()->back()->with('error', 'Ya existe un evento con el mismo título y fecha.')->withInput();
+        }
 
         // Verificar si se marca el checkbox para eliminar la imagen
         if ($request->has('eliminar_imagen') && $request->eliminar_imagen == 'on') {

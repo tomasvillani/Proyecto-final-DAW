@@ -54,7 +54,8 @@
                             </div>
 
                             <div class="flex-grow-1">
-                                <a class="h5 text-uppercase text-light" href="javascript:void(0);">
+                                <!-- Titulo de evento, con clic para mostrar la descripción si no tiene imagen -->
+                                <a class="h5 text-uppercase text-light" href="javascript:void(0);" onclick="toggleDescripcion({{ $evento->id }})">
                                     {{ $evento->titulo }}
                                 </a>
                             </div>
@@ -104,7 +105,7 @@
 </div>
 
 <script>
-    // Mostrar la descripción al hacer click en la imagen
+    // Mostrar la descripción al hacer click en la imagen o en el título
     function toggleDescripcion(eventoId) {
         const descripcion = document.querySelector(`#evento-${eventoId}`);
 
