@@ -1,4 +1,4 @@
-<p align="center"><a href="#"><img src="public/img/AAFF-LOGO-GYM-TINAJO-ELE.png" width="400" alt="Gym Tinajo"></a></p>
+<p align="center"><a href="#"><img src="public/img/imagen-readme.png" width="400" alt="Gym Tinajo"></a></p>
 
 ## Gym Tinajo
 
