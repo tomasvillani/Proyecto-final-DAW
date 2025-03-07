@@ -2,17 +2,17 @@
 
 ## Gym Tinajo
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Gym Tinajo es una plataforma web innovadora creada para ofrecer una experiencia de gimnasio única y moderna. Este proyecto permite a los usuarios gestionar sus reservas de clases y contratos de tarifas de manera fácil y eficiente. Nuestra web facilita todo el proceso, permitiendo a los miembros elegir y reservar su clase ideal con solo unos clics.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Además, para mejorar la interacción y atención al cliente, Gym Tinajo integra un chatbot inteligente con IA, disponible tanto para invitados como para clientes registrados. Este asistente virtual está diseñado para proporcionar respuestas sobre ejercicios, rutinas y dietas, ofreciendo asistencia personalizada en tiempo real. ¡Obtén recomendaciones y consejos de fitness al instante y mejora tu rendimiento en el gimnasio!
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Con Gym Tinajo, los usuarios disfrutan de:
+
+- Reservas fáciles y rápidas para cualquier clase.
+- Acceso a detalles claros sobre tarifas y clases.
+- Asistencia 24/7 gracias al chatbot basado en inteligencia artificial.
+
+Este proyecto es ideal tanto para gimnasios que buscan optimizar su gestión como para los usuarios que desean disfrutar de un gimnasio de forma ágil, eficiente y con la tecnología más avanzada.
 
 ## Learning Laravel
 
@@ -58,5 +58,5 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 Consulta los siguientes documentos para obtener información detallada sobre el proceso de desarrollo:
 
-- [Documento de análisis](https://drive.google.com/file/d/1JYtGxBnd7t1Mh1d-TopQswQT5oJZd6gz/view?usp=sharing).
-- [Documento de diseño](https://drive.google.com/file/d/1vc1F60KjAmhHbwuSaGle54EMch1z8vvw/view?usp=sharing).
+- [Documento de análisis](https://drive.google.com/file/d/1JYtGxBnd7t1Mh1d-TopQswQT5oJZd6gz/view?usp=sharing)
+- [Documento de diseño](https://drive.google.com/file/d/1vc1F60KjAmhHbwuSaGle54EMch1z8vvw/view?usp=sharing)
