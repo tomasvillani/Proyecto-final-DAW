@@ -1,4 +1,8 @@
-<p align="center"><a href="#"><img src="public/img/AAFF-LOGO-GYM-TINAJO-ELE.png" width="400" alt="Gym Tinajo"></a></p>
+<p align="center" style="background-color: #333; padding: 20px; border-radius: 10px;">
+    <a href="#">
+        <img src="public/img/AAFF-LOGO-GYM-TINAJO-ELE.png" width="400" alt="Gym Tinajo">
+    </a>
+</p>
 
 ## Gym Tinajo
 
