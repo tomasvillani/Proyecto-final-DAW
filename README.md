@@ -138,7 +138,12 @@ MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS="gymtinajo@gmail.com"
 MAIL_FROM_NAME="Gym Tinajo"
 ```
-7. Ejecuta las migraciones y estos seeders, para rellenar los datos en la base de datos:
+7. Genera la clave de encriptación:
+```
+php artisan key:generate
+```
+
+8. Ejecuta las migraciones y estos seeders, para rellenar los datos en la base de datos:
 ```
 php artisan migrate
 php artisan db:seed --class=UserSeeder
@@ -153,6 +158,8 @@ php artisan db:seed --class=EventoSeeder
 ```
 php artisan serve
 ```
+
+De esta manera, si accedes por localhost:8000, la página debe aparecer sin problema.
 
 ## Documentos de interés
 
