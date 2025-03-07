@@ -53,7 +53,7 @@ Para ejecutar **Gym Tinajo** localmente, sigue estos pasos:
 
 ### Requisitos previos:
 
-- PHP >= 8.1 , y todas las extensiones necesarias
+- PHP >= 8.1 , y todas las extensiones necesarias:
 ```
 sudo apt install software-properties-common -y
 sudo add-apt-repository ppa:ondrej/php -y
@@ -138,7 +138,7 @@ MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS="gymtinajo@gmail.com"
 MAIL_FROM_NAME="Gym Tinajo"
 ```
-7. Ejecuta las migraciones y estos seeders:
+7. Ejecuta las migraciones y estos seeders, para rellenar los datos en la base de datos:
 ```
 php artisan migrate
 php artisan db:seed --class=UserSeeder
