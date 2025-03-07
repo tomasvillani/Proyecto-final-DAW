@@ -77,10 +77,13 @@ composer --version
 ```
 sudo apt install mysql-server php-mysql -y
 ```
-Configura la base de datos:
+Configura la base de datos y el usuario correspondiente:
 ```
 sudo mysql
 CREATE DATABASE gymtinajo;
+CREATE USER 'gymtinajo'@'localhost' IDENTIFIED BY 'gymtinajo';
+GRANT ALL PRIVILEGES ON *.* TO 'gymtinajo'@'localhost';
+FLUSH PRIVILEGES;
 EXIT;
 ```
 - Node.js
