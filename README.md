@@ -126,8 +126,8 @@ DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=gymtinajo
-DB_USERNAME=root
-DB_PASSWORD=
+DB_USERNAME=gymtinajo
+DB_PASSWORD=gymtinajo
 
 MAIL_MAILER=smtp
 MAIL_HOST=smtp.gmail.com
@@ -159,7 +159,7 @@ php artisan db:seed --class=EventoSeeder
 php artisan serve
 ```
 
-De esta manera, si accedes por localhost:8000, la página debe aparecer sin problema.
+De esta manera, si accedes por 127.0.0.1:8000, la página debe aparecer sin problema.
 
 ## Documentos de interés
 
