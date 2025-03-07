@@ -39,7 +39,7 @@
             <!-- Fecha -->
             <div class="mb-3">
                 <label for="fecha" class="form-label">Fecha</label>
-                <input type="date" class="form-control @error('fecha') is-invalid @enderror" id="fecha" name="fecha" value="{{ old('fecha') }}" required>
+                <input type="date" class="form-control @error('fecha') is-invalid @enderror" id="fecha" name="fecha" value="{{ old('fecha') }}" max="9999-12-31" required>
                 @error('fecha')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
