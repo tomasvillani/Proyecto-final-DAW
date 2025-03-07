@@ -47,9 +47,116 @@ Como **administrador,** tendrás acceso completo a todas las funcionalidades par
 
 Aunque los administradores no pueden interactuar con el chatbot, tienen el control total para garantizar el buen funcionamiento del gimnasio.
 
+## Instalación
+
+Para ejecutar **Gym Tinajo** localmente, sigue estos pasos:
+
+### Requisitos previos:
+
+- PHP >= 8.1 , y todas las extensiones necesarias
+```
+sudo apt install software-properties-common -y
+sudo add-apt-repository ppa:ondrej/php -y
+sudo apt update
+sudo apt install php php-cli php-mbstring php-xml php-bcmath php-curl php-zip unzip curl -y
+```
+Confirma la instalación de PHP:
+```
+php -v
+```
+- Composer
+```
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+```
+Verifica la instalación:
+```
+compsoer --version
+```
+- MySQL
+```
+sudo apt install mysql-server php-mysql -y
+```
+Configura la base de datos:
+```
+sudo mysql
+CREATE DATABASE gymtinajo;
+EXIT;
+```
+- Node.js
+```
+sudo apt install nodejs npm
+```
+Confirma la instalación:
+```
+node -v
+npm -v
+```
+- Git
+```
+sudo apt install git
+```
+Confirma la instalación:
+```
+git --version
+```
+
+1. Clonamos el repositorio:
+```
+git clone https://github.com/tomasvillani/Proyecto-final-DAW.git
+```
+2. Accede a la carpeta:
+```
+cd Proyecto-final-DAW
+```
+3. Otorga los permisos correspondientes:
+```
+sudo chmod 777 -R ./*
+```
+4. Instala las dependencias de Composer y de Node.js:
+```
+composer install
+npm install
+npm run build
+```
+5. Copia el archivo .env.example a un archivo .env.
+6. Modifica estas líneas del .env:
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=gymtinajo
+DB_USERNAME=root
+DB_PASSWORD=
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=gymtinajo@gmail.com
+MAIL_PASSWORD=yhfiuibnxizanbxg
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS="gymtinajo@gmail.com"
+MAIL_FROM_NAME="Gym Tinajo"
+```
+7. Ejecuta las migraciones y estos seeders:
+```
+php artisan migrate
+php artisan db:seed --class=UserSeeder
+php artisan db:seed --class=TarifaSeeder
+php artisan db:seed --class=HorarioSeeder
+```
+Si quieres, también puedes ejecutar este seeder:
+```
+php artisan db:seed --class=EventoSeeder
+```
+8. Inicia el servicio:
+```
+php artisan serve
+```
+
 ## Documentos de interés
 
 Consulta los siguientes documentos para obtener información detallada sobre el proceso de desarrollo:
 
-- [Documento de análisis](https://drive.google.com/file/d/1hd3upVPj3Iqi_kpfEyYsxH3tbbwBvUXo/view?usp=sharing)
+- [Documento de análisis](https://drive.google.com/file/d/1w8SDs8tJyd-mG3YiblSuGmfGWjEiOzR3/view?usp=sharing)
 - [Documento de diseño](https://drive.google.com/file/d/1vc1F60KjAmhHbwuSaGle54EMch1z8vvw/view?usp=sharing)
