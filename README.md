@@ -71,7 +71,7 @@ sudo mv composer.phar /usr/local/bin/composer
 ```
 Verifica la instalación:
 ```
-compsoer --version
+composer --version
 ```
 - MySQL
 ```
