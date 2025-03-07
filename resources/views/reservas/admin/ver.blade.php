@@ -32,7 +32,7 @@
         <!-- Días disponibles -->
         <div class="mb-3">
             <label for="dia" class="form-label">Día</label>
-            <input type="text" name="dia" id="dia" class="form-control" value="{{ $reserva->dia }}" disabled>
+            <input type="text" name="dia" id="dia" class="form-control" value="{{ \Carbon\Carbon::parse($reserva->dia)->format('d/m/Y') }}" disabled>
         </div>
 
         <!-- Horas disponibles -->

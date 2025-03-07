@@ -18,12 +18,12 @@
                         <label for="clase">Clase</label>
                         <input type="text" class="form-control" id="clase" value="{{ $reserva->clase }}" disabled>
                     </div>
-
+                    <br>
                     <div class="form-group">
                         <label for="dia">Día</label>
                         <input type="text" class="form-control" id="dia" value="{{ \Carbon\Carbon::parse($reserva->dia)->format('d/m/Y') }}" disabled>
                     </div>
-
+                    <br>
                     <div class="form-group">
                         <label for="hora">Hora</label>
                         <input type="text" class="form-control" id="hora" value="{{ $reserva->hora }}" disabled>
