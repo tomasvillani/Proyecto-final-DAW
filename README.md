@@ -172,4 +172,4 @@ De esta manera, si accedes por 127.0.0.1:8000, la página debe aparecer sin prob
 Consulta los siguientes documentos para obtener información detallada sobre el proceso de desarrollo:
 
 - [Documento de análisis](https://drive.google.com/file/d/1dQeF-t83GiGyUGYkiutEL6hXvx9Z49MM/view?usp=sharing)
-- [Documento de diseño](https://drive.google.com/file/d/1vc1F60KjAmhHbwuSaGle54EMch1z8vvw/view?usp=sharing)
+- [Documento de diseño](https://drive.google.com/file/d/1TvbyxPCOtRh_6zt8reT367Xm7ahRDiPk/view?usp=sharing)
