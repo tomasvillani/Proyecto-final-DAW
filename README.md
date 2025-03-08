@@ -104,7 +104,7 @@ Confirma la instalación:
 git --version
 ```
 
-1. Clonamos el repositorio:
+1. Clona el repositorio:
 ```
 git clone https://github.com/tomasvillani/Proyecto-final-DAW.git
 ```
