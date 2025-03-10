@@ -6,12 +6,12 @@ use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Hash;
 
-test('reset password link screen can be rendered', function () {
+test('La pantalla de cambiar contraseña se muestra', function () {
     $response = $this->get('/forgot-password');
     $response->assertStatus(200);
 });
 
-test('reset password link can be requested', function () {
+test('Se solicita el enlace para cambiar la contraseña.', function () {
     Notification::fake();
 
     // Crear usuario con los nuevos campos
@@ -46,7 +46,7 @@ test('reset password link can be requested', function () {
     $this->assertNotEmpty($user->email);
 });
 
-test('reset password screen can be rendered', function () {
+test('Se muestra la página para cambiar la contraseña.', function () {
     Notification::fake();
 
     // Crear usuario con los nuevos campos
@@ -72,7 +72,7 @@ test('reset password screen can be rendered', function () {
     });
 });
 
-test('password can be reset with valid token', function () {
+test('La contraseña no se cambia con un token inválido', function () {
     Notification::fake();
 
     // Crear usuario con los nuevos campos

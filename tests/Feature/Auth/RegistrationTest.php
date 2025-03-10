@@ -1,12 +1,12 @@
 <?php
 
-test('registration screen can be rendered', function () {
+test('La pantalla de registro se muestra', function () {
     $response = $this->get('/register');
 
     $response->assertStatus(200);
 });
 
-test('new users can register', function () {
+test('Los usuarios nuevos pueden registrarse', function () {
     $response = $this->post('/register', [
         'dni' => '12345678Z', // DNI válido
         'name' => 'Test User',

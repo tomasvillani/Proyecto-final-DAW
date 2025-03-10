@@ -7,7 +7,7 @@ use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 // Test para verificar que solo un admin puede crear un evento
-test('store evento fails for non-admin user', function () {
+test('un cliente no puede guardar un evento', function () {
     // Crear un usuario normal (no admin) con un DNI válido
     $user = new User();
     $user->name = 'Juan';
@@ -42,7 +42,7 @@ test('store evento fails for non-admin user', function () {
 });
 
 // Test para verificar que un admin puede crear un evento
-test('store evento allows admin to create event', function () {
+test('un admin puede crear un evento', function () {
     // Crear un usuario admin con un DNI válido
     $user = new User();
     $user->name = 'Ana';
@@ -80,7 +80,7 @@ test('store evento allows admin to create event', function () {
 });
 
 // Test para la actualización de un evento (update)
-test('update evento updates the event data', function () {
+test('se puede actualizar correctamente un evento', function () {
     // Crear un evento con un usuario admin
     $user = new User();
     $user->name = 'Carlos';
@@ -124,7 +124,7 @@ test('update evento updates the event data', function () {
 });
 
 // Test para eliminar un evento (destroy)
-test('delete evento deletes the event', function () {
+test('se puede eliminar un evento correctamente', function () {
     // Crear un evento con un usuario admin
     $user = new User();
     $user->name = 'Laura';
@@ -158,7 +158,7 @@ test('delete evento deletes the event', function () {
 });
 
 // Test para actualizar un evento con una nueva imagen
-test('update evento updates with new image', function () {
+test('se puede cambiar la imagen de un evento', function () {
     // Crear un evento con un usuario admin
     $user = new User();
     $user->name = 'Pedro';
@@ -210,7 +210,7 @@ test('update evento updates with new image', function () {
 });
 
 // Test para eliminar la imagen al actualizar un evento
-test('update evento deletes the image if checkbox is checked', function () {
+test('se puede eliminar la imagen de un evento', function () {
     // Crear un evento con un usuario admin
     $user = new User();
     $user->name = 'Sofia';

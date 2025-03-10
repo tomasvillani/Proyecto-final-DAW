@@ -3,13 +3,13 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-test('login screen can be rendered', function () {
+test('La pantalla de login se carga', function () {
     $response = $this->get('/login');
 
     $response->assertStatus(200);
 });
 
-test('users can authenticate using the login screen', function () {
+test('Los usuarios pueden autenticarse por la pantalla del login', function () {
     // Crea el usuario
     $user = new User();
     $user->dni = '12345678Z'; // DNI válido
@@ -32,7 +32,7 @@ test('users can authenticate using the login screen', function () {
     $this->assertAuthenticatedAs($user);
 });
 
-test('users can not authenticate with invalid password', function () {
+test('Los usuarios no pueden autenticarse con contraseña inválida', function () {
     $user = new User();
     $user->dni = '87654321X'; // DNI válido
     $user->name = 'Another User';
@@ -50,7 +50,7 @@ test('users can not authenticate with invalid password', function () {
     $this->assertGuest();
 });
 
-test('users can logout', function () {
+test('Los usuarios pueden cerrar sesión', function () {
     $user = new User();
     $user->dni = '99887766M'; // DNI válido
     $user->name = 'Test User';

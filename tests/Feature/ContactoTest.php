@@ -7,7 +7,7 @@ use App\Mail\ContactoMailable;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ContactoController;
 
-test('enviarFormulario sends email successfully', function () {
+test('enviarFormulario envia el email correctamente', function () {
     // Configurar mailer para que use el log solo en pruebas
     Config::set('mail.default', 'log');  // Usar log en las pruebas
 
@@ -35,7 +35,7 @@ test('enviarFormulario sends email successfully', function () {
     $response->assertSessionHas('success', 'Correo enviado correctamente');
 });
 
-test('inscribirse sends email successfully', function () {
+test('email de inscribirse se envía correctamente', function () {
     // Configurar mailer para que use 'log' en las pruebas
     Config::set('mail.default', 'log');  // Esto asegura que usaremos log para las pruebas
 

@@ -7,7 +7,7 @@ use App\Models\Horario;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-test('profile page is displayed', function () {
+test('página del perfil se muestra correctamente', function () {
     $user = new User();
     $user->dni = '12345678Z'; // DNI válido
     $user->name = 'Test User';
@@ -24,7 +24,7 @@ test('profile page is displayed', function () {
     $response->assertOk();
 });
 
-test('profile information can be updated', function () {
+test('la información del perfil se puede actualizar', function () {
     $user = new User();
     $user->dni = '87654321X'; // DNI válido
     $user->name = 'Old Name';
@@ -56,7 +56,7 @@ test('profile information can be updated', function () {
     $this->assertNull($user->email_verified_at);  // Verifica que 'email_verified_at' esté en null
 });
 
-test('email verification status is unchanged when the email address is unchanged', function () {
+test('La verificación del correo electrónico no cambia cuando la dirección de correo electrónico no se ha modificado.', function () {
     $user = new User();
     $user->dni = '11223344A'; // DNI válido
     $user->name = 'Test User';
@@ -82,7 +82,7 @@ test('email verification status is unchanged when the email address is unchanged
     $this->assertNotNull($user->refresh()->email_verified_at);
 });
 
-test('user can delete their account', function () {
+test('El usuario puede eliminar su cuenta', function () {
     $user = new User();
     $user->dni = '99887766M'; // DNI válido
     $user->name = 'Test User';
@@ -106,7 +106,7 @@ test('user can delete their account', function () {
     $this->assertNull($user->fresh());
 });
 
-test('correct password must be provided to delete account', function () {
+test('El usuario debe poner la contraseña correcta para eliminar su cuenta', function () {
     $user = new User();
     $user->dni = '98765432L'; // DNI válido
     $user->name = 'Test User';
@@ -130,7 +130,7 @@ test('correct password must be provided to delete account', function () {
     $this->assertNotNull($user->fresh());
 });
 
-test('edit profile shows correct data for user with expired tarifa', function () {
+test('El perfil muestra los datos correctos para el usuario con una tarifa expirada.', function () {
     $user = new User([
         'name' => 'Juan',
         'surname' => 'Pérez',

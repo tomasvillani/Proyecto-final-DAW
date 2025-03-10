@@ -5,7 +5,7 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\URL;
 
-test('email verification screen can be rendered', function () {
+test('Se muestra la pantalla de verificación de email', function () {
     // Crear un usuario con los nuevos campos
     $user = new User();
     $user->dni = '87654321X'; // DNI válido
@@ -26,7 +26,7 @@ test('email verification screen can be rendered', function () {
     $response->assertStatus(200);
 });
 
-test('email can be verified', function () {
+test('El email puede ser verficado', function () {
     // Crear un usuario no verificado
     $user = new User();
     $user->dni = '87654321X'; // DNI válido
@@ -63,7 +63,7 @@ test('email can be verified', function () {
     $response->assertRedirect(route('dashboard', absolute: false).'?verified=1');
 });
 
-test('email is not verified with invalid hash', function () {
+test('El email no se verifica con un hash inválido', function () {
     // Crear un usuario no verificado
     $user = new User();
     $user->dni = '87654321X'; // DNI válido

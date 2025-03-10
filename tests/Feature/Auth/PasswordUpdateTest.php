@@ -3,7 +3,7 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-test('password can be updated', function () {
+test('La contraseña se actualiza', function () {
     // Crear un usuario con los nuevos campos
     $user = new User();
     $user->dni = '87654321X'; // DNI válido
@@ -33,7 +33,7 @@ test('password can be updated', function () {
     $this->assertTrue(Hash::check('new-password', $user->refresh()->password));
 });
 
-test('correct password must be provided to update password', function () {
+test('La contraseña debe ser correcta para cambiarla', function () {
     // Crear un usuario con los nuevos campos
     $user = new User();
     $user->dni = '87654321X'; // DNI válido

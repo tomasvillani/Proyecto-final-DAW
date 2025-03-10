@@ -2,7 +2,7 @@
 
 use App\Models\User;
 
-test('confirm password screen can be rendered', function () {
+test('Se muestra la pantalla de confirmar contraseña.', function () {
     // Crear un usuario con los nuevos campos
     $user = new User();
     $user->dni = '87654321X'; // DNI válido
@@ -20,7 +20,7 @@ test('confirm password screen can be rendered', function () {
     $response->assertStatus(200);
 });
 
-test('password can be confirmed', function () {
+test('La contraseña se confirma', function () {
     // Crear un usuario con los nuevos campos
     $user = new User();
     $user->dni = '87654321X'; // DNI válido
@@ -41,7 +41,7 @@ test('password can be confirmed', function () {
     $response->assertSessionHasNoErrors();
 });
 
-test('password is not confirmed with invalid password', function () {
+test('La contraseña no se confirma con una inválida', function () {
     // Crear un usuario con los nuevos campos
     $user = new User();
     $user->dni = '87654321X'; // DNI válido
