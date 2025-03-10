@@ -7,7 +7,6 @@ use Illuminate\Notifications\Notification;
 
 class CustomResetPassword extends Notification
 {
-    protected $token;
 
     public function __construct($token)
     {

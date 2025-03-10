@@ -21,7 +21,7 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/classes', [HorarioController::class,'cargar_horarios']);
+Route::get('/classes', [HorarioController::class, 'cargar_horarios'])->name('cargar_horarios');
 
 Route::get('/trainers', function () {
     return view('trainers');
