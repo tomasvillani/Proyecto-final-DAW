@@ -37,15 +37,21 @@
                         <p class="card__description">{{ $evento->descripcion }}</p>
                         
                         <div class="d-flex justify-content-between align-items-center mt-3">
-                            <span>{{ \Carbon\Carbon::parse($evento->fecha)->format('d') }}</span>
+                            <div class="text-center">
+                                <span class="d-block">{{ \Carbon\Carbon::parse($evento->fecha)->format('d') }}</span>
                                 <h6 class="text-light text-uppercase mb-0">
                                     {{ \Carbon\Carbon::parse($evento->fecha)->translatedFormat('F') }}
                                 </h6>
-                                <span>{{ \Carbon\Carbon::parse($evento->fecha)->format('Y') }}</span>
-                            <span class="fw-bold hora">
-                                <i class="bi bi-clock hora"></i>
-                                {{ \Carbon\Carbon::parse($evento->hora)->format('H:i') }}
-                            </span>
+                                <span class="d-block">{{ \Carbon\Carbon::parse($evento->fecha)->format('Y') }}</span>
+                            </div>
+
+                            <!-- Columna derecha: Hora -->
+                            <div class="text-end">
+                                <span class="fw-bold hora">
+                                    <i class="bi bi-clock hora"></i>
+                                    {{ \Carbon\Carbon::parse($evento->hora)->format('H:i') }}
+                                </span>
+                            </div>
                             @if (Auth::check() && Auth::user()->tipo_usuario == 'admin')
                                 <div class="d-flex gap-2">
                                     <a href="{{ route('eventos.edit', $evento->id) }}" class="btn btn-warning btn-sm">
