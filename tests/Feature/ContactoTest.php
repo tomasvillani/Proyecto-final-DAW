@@ -35,31 +35,6 @@ test('enviarFormulario envia el email correctamente', function () {
     $response->assertSessionHas('success', 'Correo enviado correctamente');
 });
 
-test('email de inscribirse se envía correctamente', function () {
-    // Configurar mailer para que use 'log' en las pruebas
-    Config::set('mail.default', 'log');  // Esto asegura que usaremos log para las pruebas
-
-    // Simular los datos de la inscripción
-    $data = [
-        'email' => 'test@example.com',
-        'tipo'  => 'inscripcion',
-    ];
-
-    // Fake del correo
-    Mail::fake();
-
-    // Realizamos el request y llamamos al método
-    $response = $this->post('/inscribirse', $data);
-
-    // Verificar que el correo fue enviado
-    Mail::assertSent(ContactoMailable::class, function ($mail) use ($data) {
-        return $mail->hasTo($data['email']);
-    });
-
-    // Verificar la respuesta
-    $response->assertSessionHas('success', 'Correo enviado correctamente');
-});
-
 test('enviarFormulario fails validation when missing fields', function () {
     // Configurar mailer para que use 'log' en las pruebas
     Config::set('mail.default', 'log');  // Esto asegura que usaremos log para las pruebas
@@ -79,28 +54,6 @@ test('enviarFormulario fails validation when missing fields', function () {
 
     // Esperamos que falle la validación
     $response->assertSessionHasErrors(['subject', 'message']);
-
-    // Verificar que no se envió el correo
-    Mail::assertNotSent(ContactoMailable::class);
-});
-
-test('inscribirse fails validation when email is missing', function () {
-    // Configurar mailer para que use 'log' en las pruebas
-    Config::set('mail.default', 'log');  // Esto asegura que usaremos log para las pruebas
-
-    // Datos incompletos para la validación
-    $data = [
-        // 'email' falta
-    ];
-
-    // Fake del correo
-    Mail::fake();
-
-    // Simulamos el request y llamamos al método
-    $response = $this->post('/inscribirse', $data);
-
-    // Esperamos que falle la validación
-    $response->assertSessionHasErrors(['email']);
 
     // Verificar que no se envió el correo
     Mail::assertNotSent(ContactoMailable::class);

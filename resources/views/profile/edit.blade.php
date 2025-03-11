@@ -104,6 +104,79 @@
                 @endif
             </div>
         </div>
+        <div class="card shadow mb-4">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="m-0">Método de Pago</h5>
+            </div>
+        <div class="card-body">
+            <form action="{{ route('perfil.actualizar-metodo-pago') }}" method="POST">
+                @csrf
+                @method('PUT')
+
+                <!-- Método de Pago -->
+                <div class="mb-3">
+                    <label class="form-label">Método de Pago Actual:</label>
+                    <p><strong>
+                        @if(auth()->user()->metodo_pago === 'tarjeta')
+                            Tarjeta de Crédito/Débito (**** **** **** {{ substr(auth()->user()->numero_tarjeta, -4) }})
+                        @elseif(auth()->user()->metodo_pago === 'cuenta_bancaria')
+                            Cuenta Bancaria (**** **** **** {{ substr(auth()->user()->cuenta_bancaria, -4) }})
+                        @else
+                            No registrado
+                        @endif
+                    </strong></p>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Seleccionar Nuevo Método de Pago:</label>
+                    <select name="metodo_pago" id="metodo_pago" class="form-control" required onchange="toggleFields()">
+                        <option value="tarjeta" {{ old('metodo_pago', auth()->user()->metodo_pago) == 'tarjeta' ? 'selected' : '' }}>Tarjeta de Crédito/Débito</option>
+                        <option value="cuenta_bancaria" {{ old('metodo_pago', auth()->user()->metodo_pago) == 'cuenta_bancaria' ? 'selected' : '' }}>Cuenta Bancaria (IBAN)</option>
+                    </select>
+                    @error('metodo_pago')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Input para Tarjeta de Crédito -->
+                <div class="mb-3" id="campo_tarjeta" style="{{ old('metodo_pago', auth()->user()->metodo_pago) == 'tarjeta' ? '' : 'display: none;' }}">
+                    <label class="form-label">Número de Tarjeta:</label>
+                    <input type="text" name="numero_tarjeta" id="numero_tarjeta" class="form-control" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" value="{{ old('numero_tarjeta') }}">
+                    @error('numero_tarjeta')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Input para Fecha de Caducidad -->
+                <div class="mb-3" id="campo_caducidad" style="{{ old('metodo_pago', auth()->user()->metodo_pago) == 'tarjeta' ? '' : 'display: none;' }}">
+                    <label class="form-label">Fecha de Caducidad:</label>
+                    <input type="month" name="fecha_caducidad" id="fecha_caducidad" class="form-control" value="{{ old('fecha_caducidad') }}">
+                    @error('fecha_caducidad')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Input para CVV -->
+                <div class="mb-3" id="campo_cvv" style="{{ old('metodo_pago', auth()->user()->metodo_pago) == 'tarjeta' ? '' : 'display: none;' }}">
+                    <label class="form-label">CVV:</label>
+                    <input type="text" name="cvv" id="cvv" class="form-control" maxlength="4" placeholder="CVV" value="{{ old('cvv') }}">
+                    @error('cvv')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <!-- Input para Cuenta Bancaria (IBAN) -->
+                <div class="mb-3" id="campo_cuenta" style="{{ old('metodo_pago', auth()->user()->metodo_pago) == 'cuenta_bancaria' ? '' : 'display: none;' }}">
+                    <label class="form-label">Número de Cuenta (IBAN):</label>
+                    <input type="text" name="cuenta_bancaria" id="cuenta_bancaria" class="form-control" maxlength="34" placeholder="ES00 0000 0000 00 0000000000" value="{{ old('cuenta_bancaria') }}">
+                    @error('cuenta_bancaria')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <button type="submit" class="btn btn-secondary">Actualizar Método de Pago</button>
+            </form>
+        </div>
     @endif
 
     <!-- Otras secciones del perfil (actualizar información, cambiar contraseña, etc.) -->
@@ -141,4 +214,34 @@
         </div>
     </div>
 </div>
+
+<script>
+    function toggleFields() {
+        const metodoPago = document.getElementById('metodo_pago').value;
+        
+        // Campos de tarjeta
+        const campoTarjeta = document.getElementById('campo_tarjeta');
+        const campoCaducidad = document.getElementById('campo_caducidad');
+        const campoCvv = document.getElementById('campo_cvv');
+        
+        // Campo de cuenta bancaria
+        const campoCuenta = document.getElementById('campo_cuenta');
+        
+        // Mostrar los campos de tarjeta si elige "tarjeta", ocultarlos si elige "cuenta_bancaria"
+        if (metodoPago === 'tarjeta') {
+            campoTarjeta.style.display = 'block';
+            campoCaducidad.style.display = 'block';
+            campoCvv.style.display = 'block';
+            campoCuenta.style.display = 'none';
+        } else {
+            campoTarjeta.style.display = 'none';
+            campoCaducidad.style.display = 'none';
+            campoCvv.style.display = 'none';
+            campoCuenta.style.display = 'block';
+        }
+    }
+
+    // Llamar a la función al cargar la página para verificar el valor inicial
+    window.onload = toggleFields;
+</script>
 @endsection

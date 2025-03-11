@@ -15,7 +15,7 @@
 </div>
 <!-- Hero End -->
 
-<!-- Eventos con Tarjetas Desplegables -->
+<!-- Eventos con Nuevo Diseño de Tarjetas -->
 <div class="container-fluid p-5">
 
     @if (session('success'))
@@ -25,49 +25,32 @@
     @endif
 
     <div class="row g-5">
-
         @foreach($eventos as $evento)
             <div class="col-lg-4 col-md-6">
-                <div class="blog-item">
+                <div class="event-card">
                     @if($evento->imagen)
-                        <div class="position-relative overflow-hidden rounded-top" style="cursor: pointer;" onclick="toggleDescripcion({{ $evento->id }})">
-                            <img class="img-fluid evento-img" src="{{ asset('storage/' . $evento->imagen) }}" alt="{{ $evento->titulo }}">
-                        </div>
+                        <img class="img-fluid evento-img" src="{{ asset('storage/' . $evento->imagen) }}" alt="{{ $evento->titulo }}">
+                        <!--src="{{ asset('storage/' . $evento->imagen) }}"-->
                     @endif
-
-                    <div class="bg-dark d-flex flex-column rounded-bottom p-4">
-                        <div class="d-flex align-items-center">
-                            <div class="text-center text-secondary border-end border-secondary pe-3 me-3">
-                                <span>{{ \Carbon\Carbon::parse($evento->fecha)->format('d') }}</span>
+                    <div class="card__content">
+                        <p class="card__title">{{ $evento->titulo }}</p>
+                        <p class="card__description">{{ $evento->descripcion }}</p>
+                        
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span>{{ \Carbon\Carbon::parse($evento->fecha)->format('d') }}</span>
                                 <h6 class="text-light text-uppercase mb-0">
                                     {{ \Carbon\Carbon::parse($evento->fecha)->translatedFormat('F') }}
                                 </h6>
                                 <span>{{ \Carbon\Carbon::parse($evento->fecha)->format('Y') }}</span>
-
-                                <!-- Hora con icono alineados en fila -->
-                                <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
-                                    <i class="bi bi-clock text-warning"></i>
-                                    <span class="text-warning fw-bold">
-                                        {{ \Carbon\Carbon::parse($evento->hora)->format('H:i') }}
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="flex-grow-1">
-                                <!-- Titulo de evento, con clic para mostrar la descripción si no tiene imagen -->
-                                <a class="h5 text-uppercase text-light" href="javascript:void(0);" onclick="toggleDescripcion({{ $evento->id }})">
-                                    {{ $evento->titulo }}
-                                </a>
-                            </div>
-
+                            <span class="fw-bold hora">
+                                <i class="bi bi-clock hora"></i>
+                                {{ \Carbon\Carbon::parse($evento->hora)->format('H:i') }}
+                            </span>
                             @if (Auth::check() && Auth::user()->tipo_usuario == 'admin')
                                 <div class="d-flex gap-2">
-                                    <!-- Botón Editar -->
                                     <a href="{{ route('eventos.edit', $evento->id) }}" class="btn btn-warning btn-sm">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
-
-                                    <!-- Formulario Eliminar -->
                                     <form action="{{ route('eventos.destroy', $evento->id) }}" method="POST" style="display:inline;" id="delete-form-{{ $evento->id }}">
                                         @csrf
                                         @method('DELETE')
@@ -77,11 +60,6 @@
                                     </form>
                                 </div>
                             @endif
-                        </div>
-
-                        <!-- Descripción Desplegable -->
-                        <div class="evento-descripcion mt-3 text-light" id="evento-{{ $evento->id }}" style="display: none;">
-                            <p>{{ $evento->descripcion }}</p>
                         </div>
                     </div>
                 </div>
@@ -105,19 +83,6 @@
 </div>
 
 <script>
-    // Mostrar la descripción al hacer click en la imagen o en el título
-    function toggleDescripcion(eventoId) {
-        const descripcion = document.querySelector(`#evento-${eventoId}`);
-
-        // Mostrar/Ocultar la descripción con efecto
-        if (descripcion.style.display === 'none' || descripcion.style.display === '') {
-            descripcion.style.display = 'block';
-        } else {
-            descripcion.style.display = 'none';
-        }
-    }
-
-    // Confirmación para eliminar
     function confirmDelete(eventoId) {
         if (confirm("¿Estás seguro de eliminar este evento?")) {
             document.querySelector('#delete-form-' + eventoId).submit();

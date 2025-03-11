@@ -4,6 +4,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Tarifa;
 use App\Models\Horario;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -178,16 +179,15 @@ test('El perfil muestra los datos correctos para el usuario con una tarifa expir
 });
 
 test('no permitir cambiar tarifa cuando ya tiene una asignada', function () {
-    // Crear una tarifa
-    $tarifa = new Tarifa();
-    $tarifa->id = 1;
-    $tarifa->nombre = 'Tarifa Básica';
-    $tarifa->precio = 30.00;
-    $tarifa->duracion = 30;
-    $tarifa->descripcion = 'Tarifa básica para clientes';
-    $tarifa->save();
-
-    // Crear un usuario con una tarifa asignada
+    $tarifa1 = new Tarifa();
+    $tarifa1->id = 1;
+    $tarifa1->nombre = 'Tarifa Premium';
+    $tarifa1->precio = 50.00;
+    $tarifa1->duracion = 30;
+    $tarifa1->descripcion = 'Tarifa Premium para clientes';
+    $tarifa1->save();
+    
+    // Crear un usuario con tarifa ya asignada
     $user = new User();
     $user->name = 'Carlos';
     $user->surname = 'López';
@@ -195,24 +195,31 @@ test('no permitir cambiar tarifa cuando ya tiene una asignada', function () {
     $user->password = bcrypt('password');
     $user->tipo_usuario = 'cliente';
     $user->dni = '23456789C';
-    $user->tarifa_id = 1;
+    $user->tarifa_id = $tarifa1->id; // Tarifa ya asignada
     $user->save();
+
+    // Crear una tarifa para intentar asignar
+    $tarifa2 = new Tarifa();
+    $tarifa2->id = 2;
+    $tarifa2->nombre = 'Tarifa Premium';
+    $tarifa2->precio = 50.00;
+    $tarifa2->duracion = 30;
+    $tarifa2->descripcion = 'Tarifa Premium para clientes';
+    $tarifa2->save();
 
     // Actuar como el usuario
     $this->actingAs($user)->from('/profile');
 
     // Intentar cambiar la tarifa
     $response = $this->post('/profile/cambiar-tarifa', [
-        'tarifa_id' => $tarifa->id,
+        'tarifa_id' => $tarifa2->id,
     ]);
 
-    $user->refresh(); // Recargar el usuario
+    // Verificar que no se ha cambiado la tarifa
+    $user->refresh();
+    $this->assertEquals(1, $user->tarifa_id);  // Debería seguir con la tarifa asignada previamente
 
-    // Verificar que la tarifa no ha cambiado
-    $this->assertEquals(1, $user->tarifa_id);  // La tarifa debería seguir siendo la inicial (ID 1)
-
-    // Verificar que se ha redirigido al perfil con un mensaje de error
-    $response->assertRedirect(route('profile.edit'));  // Usar route() para redirigir correctamente
+    $response->assertStatus(200);
 });
 
 test('cambiar tarifa cuando no tiene una asignada', function () {
@@ -224,6 +231,7 @@ test('cambiar tarifa cuando no tiene una asignada', function () {
     $user->password = bcrypt('password');
     $user->tipo_usuario = 'cliente';
     $user->dni = '23456789C';
+    $user->metodo_pago = 'tarjeta';
     $user->tarifa_id = null; // Sin tarifa asignada inicialmente
     $user->save();
 
@@ -253,4 +261,80 @@ test('cambiar tarifa cuando no tiene una asignada', function () {
 
     // Verificar que se ha redirigido al perfil con un mensaje de éxito
     $response->assertRedirect(route('profile.edit'));  // Usar route() para redirigir correctamente
+});
+
+test('cambiar metodo de pago a tarjeta', function () {
+    // Crear un usuario cliente
+    $user = new User();
+    $user->name = 'Carlos';
+    $user->surname = 'López';
+    $user->email = 'carlos.lopez@example.com';
+    $user->password = bcrypt('password');
+    $user->tipo_usuario = 'cliente';
+    $user->dni = '23456789C';
+    $user->save();
+
+    // Actuar como el usuario
+    $this->actingAs($user)->from('/profile');
+
+    // Los datos a enviar para cambiar a 'tarjeta'
+    $data = [
+        'metodo_pago' => 'tarjeta',
+        'numero_tarjeta' => '1234 5678 9101 1121', // Número de tarjeta válido
+        'fecha_caducidad' => '2025-12', // Fecha de caducidad en formato adecuado
+        'cvv' => '123' // CVV válido
+    ];
+
+    // Enviar la solicitud PUT con el campo _method como PUT
+    $response = $this->post(route('perfil.actualizar-metodo-pago'), array_merge($data, ['_method' => 'PUT']));
+
+    // Recargar el usuario
+    $user->refresh();
+
+    // Verificar que el método de pago se ha actualizado correctamente
+    $this->assertEquals('tarjeta', $user->metodo_pago);
+    $this->assertEquals('1234567891011121', $user->numero_tarjeta);
+    $this->assertEquals('2025-12-01', $user->fecha_caducidad);  // Asegúrate que se haya formateado la fecha correctamente
+
+    // Verificar que el CVV se haya guardado correctamente
+    $this->assertEquals('123', $user->cvv);
+
+    // Verificar que se ha redirigido al perfil con un mensaje de éxito
+    $response->assertRedirect(route('profile.edit'));
+    $response->assertSessionHas('success', 'Método de pago actualizado correctamente.');
+});
+
+test('cambiar metodo de pago a cuenta bancaria', function () {
+    // Crear un usuario cliente
+    $user = new User();
+    $user->name = 'Carlos';
+    $user->surname = 'López';
+    $user->email = 'carlos.lopez@example.com';
+    $user->password = bcrypt('password');
+    $user->tipo_usuario = 'cliente';
+    $user->dni = '23456789C';
+    $user->save();
+
+    // Actuar como el usuario
+    $this->actingAs($user)->from('/profile');
+
+    // Los datos a enviar para cambiar a 'cuenta_bancaria'
+    $data = [
+        'metodo_pago' => 'cuenta_bancaria',
+        'cuenta_bancaria' => 'ES9121000418450200051332', // IBAN válido
+    ];
+
+    // Enviar la solicitud PUT con el campo _method como PUT
+    $response = $this->post(route('perfil.actualizar-metodo-pago'), array_merge($data, ['_method' => 'PUT']));
+
+    // Recargar el usuario
+    $user->refresh();
+
+    // Verificar que el método de pago se ha actualizado correctamente
+    $this->assertEquals('cuenta_bancaria', $user->metodo_pago);
+    $this->assertEquals('ES9121000418450200051332', $user->cuenta_bancaria);
+
+    // Verificar que se ha redirigido al perfil con un mensaje de éxito
+    $response->assertRedirect(route('profile.edit'));
+    $response->assertSessionHas('success', 'Método de pago actualizado correctamente.');
 });

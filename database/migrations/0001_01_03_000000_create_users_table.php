@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            // Cambiar la clave primaria a 'id' y hacer 'dni' único
-            $table->id();  // Este es el campo 'id' como clave primaria
-            $table->string('dni')->unique();  // Hacer 'dni' único
+            // Clave primaria y campos básicos
+            $table->id();  
+            $table->string('dni')->unique();  
             $table->string('name');
             $table->string('surname');
             $table->string('email')->unique();
@@ -22,15 +22,24 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->json('clases')->nullable();
+            
+            // Relación con tarifas
             $table->foreignId('tarifa_id')
                   ->nullable()
-                  ->constrained('tarifas')  // Relaciona con la tabla 'tarifas'
+                  ->constrained('tarifas')
                   ->onDelete('set null');
             
-            // Añadir los campos de fecha de inicio y expiración
-            $table->timestamp('fecha_inicio')->nullable();  // Fecha de inicio de la tarifa
-            $table->timestamp('fecha_expiracion')->nullable();  // Fecha de expiración de la tarifa
-            
+            // Fechas de tarifa
+            $table->timestamp('fecha_inicio')->nullable();
+            $table->timestamp('fecha_expiracion')->nullable();
+
+            // Método de pago
+            $table->string('metodo_pago')->nullable(); // "tarjeta" o "cuenta_bancaria"
+            $table->string('cuenta_bancaria')->nullable(); // IBAN
+            $table->string('numero_tarjeta')->nullable(); // Número de tarjeta
+            $table->string('cvv')->nullable(); // CVV
+            $table->date('fecha_caducidad')->nullable(); // Fecha de caducidad
+
             $table->rememberToken();
             $table->timestamps();
         });

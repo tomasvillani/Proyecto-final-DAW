@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/enviar-correo', [ContactoController::class, 'enviarFormulario'])->name('enviar_correo');
 
-Route::post('/inscribirse', [ContactoController::class, 'inscribirse'])->name('inscribirse');
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -73,6 +71,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/profile/cambiar-tarifa', [ProfileController::class, 'cambiarTarifa'])->name('perfil.cambiar-tarifa');
+    Route::put('/profile/metodo-pago', [ProfileController::class, 'actualizarMetodoPago'])->name('perfil.actualizar-metodo-pago');
     
     // Rutas para las reservas
     Route::get('/mis-reservas/{userId}', [ReservaController::class, 'index'])->name('mis-reservas.index');

@@ -345,3 +345,63 @@ box-shadow: none;
     object-position: center; /* Centra la imagen */
     border-radius: 10px; /* Bordes redondeados opcional */
 }
+
+.event-card {
+    position: relative;
+    width: 100%;
+    max-width: 500px;  /* Aumenté el tamaño de la tarjeta aún más */
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    margin: 10px auto; /* Centrar las tarjetas */
+    height: 450px;  /* Aumenté la altura de la tarjeta */
+  }
+  
+  .event-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .event-card img {
+    width: 100%;
+    height: 450px;  /* Aumenté la altura de la imagen */
+    object-fit: cover;
+  }
+  
+  .card__content {
+    padding: 15px;
+    background-color: #fff;
+    position: absolute;  /* Colocar el contenido sobre la imagen */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;  /* Hacer invisible el contenido inicialmente */
+    transition: opacity 0.3s ease-in-out;
+    background: rgba(0, 0, 0, 0.6); /* Fondo oscuro para mejorar la visibilidad del texto */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
+  .event-card:hover .card__content {
+    opacity: 1;  /* Hacer visible el contenido al hacer hover */
+  }
+  
+  .card__title {
+    font-size: 24px;  /* Aumenté el tamaño del título */
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card__description {
+    font-size: 16px;  /* Aumenté el tamaño de la descripción */
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+  
+  .hora {
+    color: #007bff; /* Cambié el color de la hora al solicitado */
+  }
