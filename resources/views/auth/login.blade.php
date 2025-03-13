@@ -5,7 +5,7 @@
 @section('content')
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
     <div class="form-box p-4" style="max-width: 400px; width: 100%; margin-top: 20px;">
-        <form method="POST" action="/login" class="form">
+        <form method="POST" action="{{ route('login') }}" class="form">
             @csrf
             <h2 class="text-center">Iniciar sesión</h2>
             <p class="text-center text-muted">Accede a tu cuenta con tu DNI.</p>
