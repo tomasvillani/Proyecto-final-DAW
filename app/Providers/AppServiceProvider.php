@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -42,5 +43,8 @@ class AppServiceProvider extends ServiceProvider
             return false;
         });
         Route::aliasMiddleware('admin', AdminMiddleware::class);
+        if (config('app.env') !== 'local') {
+            URL::forceScheme('https');
+        }
     }
 }

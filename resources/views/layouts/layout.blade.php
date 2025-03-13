@@ -10,7 +10,12 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('img/icono_gym.png') }}" rel="icon">
+    @if (app()->environment('local'))
+        <link rel="icon" href="{{ asset('img/icono_gym.png') }}">
+    @else
+        <link rel="icon" href="{{ secure_asset('img/icono_gym.png') }}">
+    @endif
+
     <script src="https://kit.fontawesome.com/4dd134ba8a.js" crossorigin="anonymous"></script>
 
     <!-- Google Web Fonts -->
