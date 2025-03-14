@@ -171,7 +171,7 @@ De esta manera, si accedes por 127.0.0.1:8000, la página debe aparecer sin prob
 
 Consulta los siguientes documentos para obtener información detallada sobre el proceso de desarrollo:
 
-- [Documento de análisis](https://drive.google.com/file/d/1xT20bIHf2l_sUA8WNor37xCphStXyilN/view?usp=sharing)
+- [Documento de análisis](https://drive.google.com/file/d/129tjCpGYUdT33NKwFFzKBnu1K_T4uwNj/view?usp=sharing)
 - [Documento de diseño](https://drive.google.com/file/d/1us5id3z-igcppqb8Gt1ynCrnyWBbJbNV/view?usp=sharing)
 
 ## Visita el Proyecto Online
