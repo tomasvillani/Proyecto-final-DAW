@@ -133,12 +133,12 @@ DB_USERNAME=gymtinajo
 DB_PASSWORD=gymtinajo
 
 MAIL_MAILER=smtp
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USERNAME=gymtinajo@gmail.com
-MAIL_PASSWORD=yhfiuibnxizanbxg
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS="gymtinajo@gmail.com"
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=4c2389d9e1f1e2
+MAIL_PASSWORD=8b504d67215918
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=gymtinajo@gmail.com
 MAIL_FROM_NAME="Gym Tinajo"
 ```
 7. Genera la clave de encriptación:
