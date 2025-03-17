@@ -43,7 +43,7 @@ Como **administrador,** tendrás acceso completo a todas las funcionalidades par
 
 - **Gestión de clientes y reservas:** Puedes **crear, ver, editar y eliminar** reservas de clases de todos los usuarios, así como gestionar la información de los clientes.
 - **Control total de las reservas:** Organiza y administra las reservas de clases para que el gimnasio funcione de manera óptima.
-- **Gestión de tarifas** e **información general:** Administra las tarifas disponibles y ajusta los datos relacionados con las clases y horarios.
+- **Gestión de eventos** e **información general:** Administra los eventos disponibles y ajusta los datos relacionados con las clases y horarios.
 
 Aunque los administradores no pueden interactuar con el chatbot, tienen el control total para garantizar el buen funcionamiento del gimnasio.
 
