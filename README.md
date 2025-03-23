@@ -43,7 +43,7 @@ Como **administrador,** tendrás acceso completo a todas las funcionalidades par
 
 - **Gestión de clientes y reservas:** Puedes **crear, ver, editar y eliminar** reservas de clases de todos los usuarios, así como gestionar la información de los clientes.
 - **Control total de las reservas:** Organiza y administra las reservas de clases para que el gimnasio funcione de manera óptima.
-- **Gestión de tarifas** e **información general:** Administra las tarifas disponibles y ajusta los datos relacionados con las clases y horarios.
+- **Gestión de eventos** e **información general:** Administra los eventos disponibles y ajusta los datos relacionados con las clases y horarios.
 
 Aunque los administradores no pueden interactuar con el chatbot, tienen el control total para garantizar el buen funcionamiento del gimnasio.
 
@@ -133,12 +133,12 @@ DB_USERNAME=gymtinajo
 DB_PASSWORD=gymtinajo
 
 MAIL_MAILER=smtp
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USERNAME=gymtinajo@gmail.com
-MAIL_PASSWORD=yhfiuibnxizanbxg
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS="gymtinajo@gmail.com"
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=4c2389d9e1f1e2
+MAIL_PASSWORD=8b504d67215918
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS=gymtinajo@gmail.com
 MAIL_FROM_NAME="Gym Tinajo"
 ```
 7. Genera la clave de encriptación:
@@ -171,5 +171,9 @@ De esta manera, si accedes por 127.0.0.1:8000, la página debe aparecer sin prob
 
 Consulta los siguientes documentos para obtener información detallada sobre el proceso de desarrollo:
 
-- [Documento de análisis](https://drive.google.com/file/d/1dQeF-t83GiGyUGYkiutEL6hXvx9Z49MM/view?usp=sharing)
+- [Documento de análisis](https://drive.google.com/file/d/129tjCpGYUdT33NKwFFzKBnu1K_T4uwNj/view?usp=sharing)
 - [Documento de diseño](https://drive.google.com/file/d/1us5id3z-igcppqb8Gt1ynCrnyWBbJbNV/view?usp=sharing)
+
+## Visita el Proyecto Online
+
+Puedes visitar nuestra página web [aquí](https://8080-tomasvillan-proyectofin-qc0d9n3si56.ws-eu118.gitpod.io/)
